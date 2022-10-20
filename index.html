@@ -2,20 +2,47 @@
     <head>
         <!--used to describe website title, who made it, keywords, import css and js files-->
         <!--no content will be shown on screen in this tag-->
-        <!--atributes are used to refer tags to be used in css files and also to give a boost in html configuration-->
+        <!--attributes are used to refer tags to be used in css files and also to give a boost in html configuration-->
         <!--relevant SEO information for the website will be inserted here, in the meta tags-->    
         <!--meta tags:-->
 
-        <meta charset="UTF-8"> <!--setting character codification standard-->
-        <meta name="description" content="My website"> <!--giving a website description to be shown when googling it-->
+        <meta charset="UTF-8">
+        <!--setting character codification standard-->
+        <meta name="description" content="My website">
+        <!--giving a website description to be shown when googling it-->
         <meta name="author" content="Victor Nunes">
-        <meta name="keywords" content="HTML project"> <!--this is used to improve SEO useful information-->
-        <meta name="robots"> <!--one of the most important tags for SEO, it has a lot of atributes to set robot search configuration-->
+        <meta name="keywords" content="HTML project">
+        <!--this is used to improve SEO useful information-->
+        <meta name="robots">
+        <!--one of the most important tags for SEO, it has a lot of attributes to set robot search configuration-->
+        
+        <!--we can input CSS commands using style tag, without having a CSS file-->
+        <style>
+            th, td{
+                border: 1px solid black;
+                padding: 5px;
+                border-radius: 4px;
+            }
+            
+        </style>
+
+        <link rel="stylesheet" href="./style.css">
+
+        <!--where to call JS file: the proper way is to put the link for JS file to be loaded after HTML-->
+        <!--Then, we can use some attributes like 'defer' (to load after HTML) or 'async' to load 'in parallel'-->
+        <!--Or you can put without attribute at the end of the code, after body for example but inside html tag-->
+        <script src="./script.js" defer></script>
         
         <title> My website page</title>
     </head>
 
     <body>
+
+        <script>
+            alert('Hello inside HTML (:')
+        </script>
+        <!--you can use JS inside HTML like above, but not recommended-->
+
         <!--in this tag, we will be displaying content on the website screen-->
         <h1>My first HTML project, tittle tags - h1</h1>
         <h2>Subtittle - h2</h2>
@@ -35,17 +62,18 @@
         </p>
         <!--usually this style tags like strong, b and i are not used, we do all of this kind of thing using CSS-->
         
-        <span>
-            Span tag, used to show texts in html, most used in small information like image subtittles, forms and etc
-        </span>
+        <span>Span</span>
+        <!--Span tag, used to show texts in html, most used in small information like image subtittles, forms and etc-->
 
         <!--div classes doesn't display info on the screen, it is used to group related tags, division, to organize your code
         and it helps to give a better style when using CSS-->
        
         <div class="lists">
             <h1>Div class: Lists</h1>
-            <!--Lists: without li tag, nothing will be displayed-->
+            <!--lists: without li tag, nothing will be displayed-->
+
             <h2>Unordered list</h2>
+            <!--unordered shows bullets instead of a numbered list-->
             <ul>
                 <li>Item 01</li>
                 <li>Item 02</li>
@@ -54,6 +82,7 @@
             </ul>
 
             <h2>Ordered list</h2>
+            <!--ordered shows a ordered numbered list instead of bullets-->
             <ol>
                 <li>Item 01</li>
                 <li>Item 02</li>
@@ -64,25 +93,173 @@
             
         <div class="links">
             <h1>Div class: Links</h1>
-            <a>Tag "a" alone, without href atribute is pure text</a><br>
-            <a href="http://www.google.com">Tag with href atribute, it goes to Google website</a>
+            <a>Tag "a" alone, without href attribute is pure text</a><br>
+            <a href="http://www.google.com">Tag with href attribute, it goes to Google website</a>
             <p>Youtube: <a href="http://www.youtube.com">Click here!</a></p> 
             <a href="http://www.globo.com" target="_blank">Click here to go to Globo page in a new browser tab</a>   
         </div>
 
         <div class="images">
             <h1>Div class: Images</h1>
-            <!--alt atribute it is used to show the text to describe 
+            <!--alt attribute it is used to show the text to describe 
                 the image (accessibility purpose and SEO as well)
                 besides it shows the description when the image is not available or doesn't load properly -->
             <img src="./html-logo.png" width="100" alt="HTML5 logo">
+        </div>
+
+        <div class="forms">
+            <h1>Div class: Forms</h1>
+            <form>
+                <!--tag form does not display information on the screen-->
+
+                <label>Text input</label><br>
+                <!--label tag input tittle before the text field-->
+               
+                <input type="text" placeholder="Enter your name" required><br><br>
+                <!--insert a text field on the screen-->
+                <!--placeholder attribute displays inside the text field a information to the user-->
+                <!--required attribute does not allow users to submit a form without filling in the field-->
+                
+                <input type="password" placeholder="Password"> <br><br>
+                <!--password field to hide characters when users are typing their passwords-->
+                
+                <input type="email" placeholder="E-mail"> <br><br>
+                <!--validate e-mail format without using JS-->
+
+                <input type="datetime-local" placeholder="Date and time"> <br><br>
+                <!--let users select date and time in a field-->
+
+                <input type="number" min="0" max="5"> <br><br>
+                <!--only numbers allowed, can be limited with min and max attributes-->
+                
+                <input type="file"> <br><br>
+                <!--let users select one file to be submitted, for example-->
+                
+                <textarea placeholder="Enter your comment"></textarea><br>
+                <!--provide a area to input texts-->
+
+                
+                <p>Choose your language:</p>
+                
+                <input type="radio" name="html">
+                <label>HTML</label>
+                <!--displays radio buttons, it works properly only if name attribute be inside the tag
+                    otherwise users can select more than 1 radio button
+                    label tag gives a name to be displayed for each radio button-->
+                
+                <input type="radio" name="css" id="css">
+                <label for="css">CSS</label>
+                <!--id and for attributes allows users to click on the "name" of the radio button to select it
+                    without them, users can select radio button only if click inside the button-->
+
+                <input type="radio" name="js">
+                <label>JS</label> <br>
+
+                <p>Choose your gender:</p>
+                
+                <input type="checkbox">
+                <label>Male</label>
+                <!--checkbox type allows to select multiple options, work without a name attribute
+                    the same as id and for attributes used above in radio buttons can be used here as well-->
+
+                <input type="checkbox" checked id="female">
+                <label for="female">Female</label> <br> <br>
+
+                <select>
+                    <!--select tag display a box with options to be selected-->
+                    <option>Choose one option</option>
+                    <option>Option 01</option>
+                    <option>Option 02</option>
+                    <option>Option 03</option>
+                </select><br><br>
+
+                <button>Send</button>
+                <!--button tag to display button to submit any info-->
+                
+            </form>
+        </div>    
+        
+        <div class="tables">
+            <h1>Div class: Tables</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th> <!--th to get style configuration in the head-->
+                        <th>Age</th>
+                        <th>Country</th>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Victor</td>
+                        <td>28</td>
+                        <td>Brazil</td>
+                    </tr>
+                    <tr>
+                        <td>Yasmin</td>
+                        <td>24</td>
+                        <td>Brazil</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Total</td>
+                        <td>2</td>
+                    </tr>
+                </tbody>
+
+            </table> <br>
+            <!--tags thead (table head) and tbody are used for semantic purposes-->
+            <!--tr means table row-->
+            <!--td means table data-->
+            <!--colspan attribute it is used to input how many columns the data will take in the table-->
+        </div>
+
+        <div class="audio-video">
+            <h1>Div Class: Audio-Video</h1>
+
+            <video src="./video.mp4" type="video" width="400" controls></video>
+            <!--controls attribute enable video controls to play/pause/etc-->
+            <!--type attribute is optional-->
+            <!--for audio, it is the same logic, just change the tag video by audio-->
+            <br><br>
 
         </div>
 
+        <div class="semantic-tags">
+            <h1>Div class: Semantic Tags</h1>
+            <!--In order to avoid using a lot of divs with classes to refer each part of the code, which are not semantic, just mean division,
+                there are some tags to be used in the HTML code to define better each part of it-->
+            <header>
+                <!--To create your header-->
+                <nav>
+                    <!--Can be used like a menu-->
+                    <a href="a">Link #1</a>
+                    <a href="a">Link #2</a>
+                    <a href="a">Link #3</a>
+                </nav>
+            </header> 
 
+            <main>
+                <!--represents the main content of your webpage-->
+                <section>
+                    <!--to split your main content into smaller parts, organizing it-->
 
+                </section>
 
-       
-    
+                <aside>
+                    <!--can be used like a menu on the side of your webpage-->
+                </aside>
+
+                <article>
+                    <!--to use to input texts with images-->
+                </article>
+
+                <footer>
+                    <!--to define better where is the footer part-->
+                </footer>
+            </main>
+        </div>
+            
     </body>
 </html>
