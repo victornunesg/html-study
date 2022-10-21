@@ -16,7 +16,7 @@ element > class > id > style in line (not use, never) */
 /*SPECIFICITY EXAMPLES*/
 
 div { /*Element*/
-    background-color: red;
+    background-color: lightgray;
 }
 
 .green { /*Class*/
@@ -63,18 +63,74 @@ p {
 /*===============================================================================*/
 
 /*WIDTH/HEIGHT/BORDER/BORDER-RADIUS SETTINGS EXAMPLES*/
-.red {
-    background-color: red;
+.yellow {
+    background-color: lightgrey;
     width: 100px;
     height: 100px;
-    border: 10px dotted black; /*receive 3 values: border thickness, border type and border color*/
+    border: 10px dotted black;
+    /*border provides the visual settings between marging and padding*/
+    /*receive 3 values: border thickness, border type and border color*/
     border-radius: 20px; /*used to round the border*/
 }
 
-.gray {
-    background-color: gray;
+.blue {
+    background-color: lightgrey;
     width: 100%;
     height: 100px;
-    border: 10px double black; /*receive 3 values: border thickness, border type and border color*/
+    border: 10px double black;
     border-radius: 80px;
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*MARGIN AND PADDING SETTINGS EXAMPLE*/
+.red p {
+    text-align: center;
+}
+.red {
+    background-color: lightgrey;
+    border: 5px solid red;
+    padding: 10px 20px 30px 40px;
+    /*padding provides spacing inside the element, if you put only 1 value, it will include space in all directions*/
+    /*we can put 2 or 4 values. for 2 values, the first one is vertical direction and the second one is horizontal*/
+    /*if we put 4 values, the sequence will be: top > right > bottom > left*/
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    /*the commands between lines 98 and 101 provides the same result as the one at line 94*/
+
+}
+
+.gray {
+    background-color: lightgray;
+    border: 5px solid blue;
+    margin: 10px 20px 30px 40px;
+    /*margin provides spacing outside of the element */
+    /*the logic is the same as padding's 1, 2 or 4 values and the same sequence*/
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    margin-left: 40px;
+    /*the commands between lines 106 and 109 provides the same result as the one at line 103*/
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*DISPLAY SETTINGS EXAMPLE*/
+
+/*by standard, tag p uses display block, creating a block element using 100% of screen space, breaking line*/
+h2 {
+    margin-top: 25px;
+}
+
+div {
+    margin-bottom: 50px;
+}
+
+.none {
+    display: none;
+    /*the element will not be displayed */
 }
