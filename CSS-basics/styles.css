@@ -1,0 +1,80 @@
+/*
+In CSS, everything, every element is like a box
+Margin - External area of the element
+Border - Around the element
+Padding - In the center, between the 'content' and the border
+
+span is one element that, by standard, does not have any margin, border and padding
+
+specificity
+
+element > class > id > style in line (not use, never) */
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*SPECIFICITY EXAMPLES*/
+
+div { /*Element*/
+    background-color: red;
+}
+
+.green { /*Class*/
+    background-color: green;
+}
+
+#blue { /*id (starts with a # instead of .)*/
+    background-color: blue !important; /*In this case, if some style in line be used, the important element overwrite the style*/
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*FONTS EXAMPLES*/
+
+p {
+    font-size: 30px;
+    color: red;
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*BACKGROUND SETTINGS EXAMPLES*/
+
+.div-background {
+    width: 100%;
+    height: 500px;
+
+    background-color: gray;
+    background-image: url("./css-logo.png");
+    background-repeat: no-repeat; /*to not repeat the image*/
+    background-position: center; /*to position the image at the center of the div*/
+    background-size: contain; /*to adjust the image inside the div, like extend or centralize*/
+
+    /*background: chartreuse; /*overwrite everything*/
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*WIDTH/HEIGHT/BORDER/BORDER-RADIUS SETTINGS EXAMPLES*/
+.red {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    border: 10px dotted black; /*receive 3 values: border thickness, border type and border color*/
+    border-radius: 20px; /*used to round the border*/
+}
+
+.gray {
+    background-color: gray;
+    width: 100%;
+    height: 100px;
+    border: 10px double black; /*receive 3 values: border thickness, border type and border color*/
+    border-radius: 80px;
+}
