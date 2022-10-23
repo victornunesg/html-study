@@ -10,6 +10,12 @@ specificity
 
 element > class > id > style in line (not use, never) */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} /*removing the standard margins from web browser*/
+
 /*===============================================================================*/
 /*===============================================================================*/
 
@@ -142,7 +148,7 @@ div {
 
 .block {
     display: block;
-    /*standard for p tag*/
+     /*standard for p tag*/
 }
 
 .inline-block {
@@ -200,4 +206,38 @@ p.float {
     /*float defines in which position the element will be placed*/
     /*is not too used anymore since flexbox is more popular*/
 
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*BOX-SHADOW AND OPACITY SETTINGS EXAMPLE*/
+ .box-opacity {
+    width: 250px;
+    height: 250px;
+    background: green;
+    box-shadow: 10px 10px 5px 10px rgba(0, 0, 0, 0.8);
+    /*receive 4 values: offset for x and y to determine how many pixels
+    blur radius, spread radius and color*/
+    opacity: 0.5;
+    /*indicates the element transparency, applies to the hole element, including its content
+    initial value is 1, you can adjust it from 0.0 to 1.0*/
+ }
+ 
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*UNITS SETTINGS EXAMPLE*/
+
+.units {
+    width: 100vw;
+    height: 150vh;
+    background: gray;
+
+    /*pixels maybe is not the best option for a responsive page*/
+    /*percentage, vh (viewport height), vw (viewport width) are relative, can adapt to the user screen*/
+}
+
+.units #father {
+    
 }
