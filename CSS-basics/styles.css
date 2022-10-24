@@ -22,7 +22,7 @@ element > class > id > style in line (not use, never) */
 /*SPECIFICITY EXAMPLES*/
 
 div { /*Element*/
-    background-color: lightgray;
+    background-color: lightcyan;
 }
 
 .green { /*Class*/
@@ -238,6 +238,42 @@ p.float {
     /*percentage, vh (viewport height), vw (viewport width) are relative, can adapt to the user screen*/
 }
 
-.units #father {
-    
+#father {
+    width: 500px;
+    height: 150px;
+    background-color: pink;
+    font-size: 30px;
 }
+
+#son {
+    width: 500px;
+    height: 150px;
+    background-color: pink;
+    font-size: 0.5rem;
+    /*em uses the reference of father container so in this case the font size will be 15px (30px * 0.5)*/
+    /*it works for other parameters as well, like border-radius for example*/
+    /*on the other hand, rem uses the reference contained in the root element (html document), not on the father container*/
+}
+ 
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*GRADIENT SETTINGS EXAMPLE*/
+
+.gradient {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(black, blue);
+    /*by standard, the gradient begins on top with the first color than goes to the bottom with the second color*/
+    /*it is possible to use much more than 2 colors*/
+    /*you can use like this to change the order*/
+    background: linear-gradient(to right, orange, red, pink);
+    /*it is also possible to define the gradient direction using degrees*/
+    background: linear-gradient(45deg, orange, red,pink);
+    /*instead of using colors like above, you can also use rgba parameter*/
+}
+ 
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*PSEUDO-CLASS SETTINGS EXAMPLE*/

@@ -1,0 +1,31 @@
+/*This is a tip to create a css file to reset all the parameters that come by standard on the webpage and also set
+    some definitions that you may use in an entire project*/
+* {
+    /*universal selector, this will set the styles for all elements used inside this CSS file*/
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+input, button {
+    outline: 0;
+}
+
+button {
+    cursor: pointer;
+}
+
+div.red {
+    width: 150px;
+    height: 150px;
+    background: red;
+    margin-bottom: 15px;
+}
