@@ -9,14 +9,18 @@ allow manipulations, content change, classes and attributes. The object 'documen
 </head>
 <body>
     <!--DOM EXAMPLE-->
+
+<!--
     <p>Hello world!</p>
+-->  
 
     <!--CONSOLE EXAMPLE-->
 
-    <!--you can use the console to debug, see things happening-->
+<!--
     <script>
         var name = 'Victor'
         console.log('Hello, welcome ' + name + '!')
+        //you can use the console to debug, see things happening
 
         //there are other functions to be used on console, like: 
         console.error('Error identified in this line')
@@ -28,10 +32,146 @@ allow manipulations, content change, classes and attributes. The object 'documen
         //can also be used including 'window' in the syntax:
         window.console.log('Message using window in the syntax')
     </script>
+-->
 
     <!--ALERT, PROMPT & CONFIRM EXAMPLE-->
 
+<!--
+    <script>
+        alert('Hello world!');
+        //shows an alert box to the user
+
+        const promptname = prompt('Type your name');
+        alert('Your name is ' + promptname);
+        //shows a box in which user can insert some information
+
+        const status = confirm('Would you like to delete this item?');
+        //shows a decision box to the user
+        //if user select 'OK' the result will be true, otherwise will be false
+       
+        if(status){
+            alert('Deleted!');
+        } else {
+            alert('Cancelled!');
+        }
+        //here we are deciding if status be true, 'Deleted' message will be displayed
+        //else, 'Cancelled' message will be displayed
+    </script>
+-->
+
+    <!--GET ELEMENT BY ID & BY CLASS NAME EXAMPLE-->
+
+<!--    
+    <div id="container">
+        <h1 class="title">Hello world!</h1>
+        <h2 class="title">Hello world again!</h2>
+    </div>
+
+    <script>
+        const div = document.getElementById('container');
+        //here we are using getElementById method from document object to capture the div 'container' using his ID
+        
+        const title = document.getElementsByClassName('title');
+        //here we are using getElementByClassName method from document object to capture the h1 tag using his class name
+
+        console.log(title);
+        //as we have 2 classes named 'title' in the console will be shown 2 elements captured
     
+    </script>
+-->
+
+    <!--GET ELEMENT BY NAME & BY TAG NAME EXAMPLE-->
+
+<!--  
+    <p name="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+
+    <span>Hello world!</span><br>
+    <span>Hello world!</span><br>
+    <span>Hello world!</span><br>
+    <span>Hello world!</span><br>
+    <span>Hello world!</span><br>
+    <span>Hello world!</span><br>
+
+    <script>
+        const text = document.getElementsByName('text');
+        //here we are using getElementsByName method from document object to capture the p tag named 'text' using his name
+
+        console.log(text);
+        //in the console will be displayed a nodelist / array because class name can be repeated so you can have more than 1 in the same node
+
+        console.log(text[0]);
+        //in this case as we only have one element named 'text', the position inside the array is 0
+    
+        console.log(text[0].tagName);
+        //you can use this command to see the tag name of the element
+
+        const span = document.getElementsByTagName('span');
+        //here we are using getElementsByTagName method from document object to capture the span using only the tag type 
+
+        console.log(span);
+        //in the console will be displayed a nodelist / array with all the existing elements related to the tag
+        
+        span[1].innerHTML = 'Changed using inner.HTML method!'
+        //after the element be captured, we can change the content using methods like this
+
+    </script>
+-->
+
+    <!--QUERY SELECTOR & QUERY SELECTOR ALL EXAMPLE-->
+
+<!--
+    <p class="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+    
+    <span class="text">Hello world!</span>
+
+    <h5 class="text">Hello dev front-end!</h5>
+
+    <script>
+        const element = document.querySelector('.text');
+        //to capture the class using querySelector, we have to access the class like CSS, using . to do it
+        //to capture the id, for example, we should use # instead of .
+
+        console.log(element);
+        //in this case only the first element that contains the class or id will be captured
+
+        const elements = document.querySelectorAll('.text');
+        //now we are capturing all the elements that have the class 'text'
+
+        console.log(elements);
+        //then all the elements will be captured in a nodeList
+        //now we can locate and change the elements according to the commands used in the section above
+
+    </script>
+-->
+
+    <!--INNER HTML EXAMPLE-->    
+    
+    <p id="text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    </p>
+    
+    <script>
+        //innerHTML allows us to access the content of an element to change or just see it
+
+        const text = document.getElementById('text');
+        //capturing the p tag inside the 'text' constant
+
+        const content = text.innerHTML;
+        //putting the content of p tag inside of another constant named 'content'
+
+        const content2 = 'Hello world!';
+        text.innerHTML = content2;
+        //here we are changing the content of p using other constant
+
+        text.innerHTML = 'Hello world without constant';
+        //or we can change p content directly, without any constant
+
+
+    </script>
 
 
 </body>
