@@ -6,8 +6,18 @@ allow manipulations, content change, classes and attributes. The object 'documen
 <head>
     <meta charset="UTF-8">
     <title>DOM</title>
+    <style>
+        /*This CSS is to help at the CLASSLIST example*/
+        .blue {
+            color: blue;
+        }
+        .red {
+            color: red;
+        }
+    </style>
 </head>
 <body>
+
     <!--DOM EXAMPLE-->
 
 <!--
@@ -149,7 +159,8 @@ allow manipulations, content change, classes and attributes. The object 'documen
 -->
 
     <!--INNER HTML EXAMPLE-->    
-    
+
+<!--    
     <p id="text">
         Lorem ipsum dolor sit amet consectetur adipisicing elit.
     </p>
@@ -172,8 +183,172 @@ allow manipulations, content change, classes and attributes. The object 'documen
 
 
     </script>
+-->
 
+    <!--CLASSLIST EXAMPLE-->
 
+<!--
+    <p id="text" class="testcolor">
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    </p>
+
+    <script>
+        const test = document.getElementById('text');
+        //capturing p element into test constant
+
+        //the main functionality of this method is to change the class of an element (add or change or remove)
+        test.classList.add('blue');
+        //adding class 'blue' to p element, now the p class will be displayed on console as 'testcolor blue'
+        test.classList.remove('testcolor');
+        //and now we will only have the class 'blue' in p element
+        test.classList.add('red');
+        //adding the class red will make p element red because it considers the last one
+
+        if(test.classList.contains('red')) {
+            alert('Element contains "Red" class');
+        }
+        //it is possible to use 'contains' to check if the element has some information like above
+    </script>
+-->
+
+    <!--STYLE EXAMPLE-->
+
+<!--
+    <div id="container">
+        <p id="text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+        </p>
+    </div>
+
+    <script>
+        const text = document.getElementById('text');
+        const changediv = document.getElementById('container');
+        
+        text.style.color = 'red';
+        text.style.fontSize = '3em';
+        changediv.style.width = '100%';
+        changediv.style.height = '300px';
+        changediv.style.backgroundColor = 'gray';
+        //via JS and style property you can change and modify the element without CSS
+        
+
+    </script>
+-->
+
+    <!--CREATE ELEMENT, APPEND CHILD & REMOVE CHILD EXAMPLE-->
+
+<!--
+    <script>
+        const div = document.createElement('div');
+        //creating a div using JS. You can put any tag you want to be created
+        div.innerHTML = 'Hello world';
+        //now inserting content to the div, but it does not display in html yet
+    </script>
+
+    <div id="container"></div>
+
+    <script>
+        const capturediv = document.getElementById('container');
+        //capturing a div from html
+        const logoJS = document.createElement('img');
+        //creating an image element using JS 
+        const title = document.createElement('h1');
+        //creating a h1 element using JS 
+        
+        title.innerHTML = 'JavaScript logo';
+        //using JS to insert content to h1
+
+        logoJS.style.width = '200px';
+        logoJS.style.height = '200px';
+        //using JS to modify image size
+
+        logoJS.src = './javascript-logo.png';
+        //setting source to logoJS constant
+        capturediv.appendChild(title);
+        //adding the h1 inside the div container in HTML using constant 'title' in JS
+        capturediv.appendChild(logoJS);
+        //adding the image inside the div container in HTML using constant 'capturediv' in JS
+
+        //to remove any element, just use REMOVE CHILD, like this:
+        capturediv.removeChild(title);        
+    </script>
+-->
+
+    <!--GET, SET & REMOVE ATTRIBUTE EXAMPLE-->
+
+<!--
+
+    <img 
+        src="./javascript-logo.png"
+        alt="JS logo"
+        width="300"
+        id="logo"
+        >
+
+    <script>
+        const logoJS = document.getElementById('logo');
+        const attribute = logoJS.getAttribute('alt');
+        //we have captured the attribute 'alt' and inserted into 'attribute' constant
+        
+        logoJS.setAttribute('width','500');
+        //using setattribute you can change an attribute or even set any attribute if not specified in HTML code
+        //this parameter receives two values: 1-attribute name and 2-attribute value
+
+        logoJS.removeAttribute('width');
+        //now we are removing the attribute 'width' definetly so altough it is declared both HTML and JS
+        //it will be removed from all so the result is: the image will now have its original size
+    </script>
+-->
+
+    <!--CHILD NODES & PARENT NODE EXAMPLE-->
+
+<!--
+
+    <main id="container">
+        <div id="container-list">
+            <ul id="list">
+                <li>Item 01</li>
+                <li>Item 02</li>
+                <li>Item 03</li>
+            </ul>
+        </div>
+    </main>
+
+    <script>
+        const main = document.getElementById('container');
+        const div = document.getElementById('container-list');
+        const ul = document.getElementById('list');
+
+        console.log(main.childNodes);
+        //display in console all direct child nodes from 'main' tag so should consider only 'div'
+        //it only has 1 item but the blank spaces between the elements are considered as 'text'
+
+        console.log(div.childNodes);
+        //now will be displayed blanks/text and ul
+
+        console.log(ul.childNodes);
+        //displaying the list items, that are direct nodes from ul
+
+        console.log(ul.childNodes[1]);
+        //getting only the first element from ul = 'Item 01'
+
+        ul.childNodes[1].innerHTML = 'Changed via innerHTML';
+        //changing the content/value using inner
+
+        console.log(document.documentElement.firstChild);
+        //gets the first child node from the document - in this case should be 'head' tag
+        //the last child is 'body' and it gets all inside 'body'
+
+        console.log(ul.parentNode);
+        //gets the parent from ul = 'div'
+
+        console.log(ul.parentNode.parentNode);
+        //gets the parent from div = 'main'
+    </script>
+
+-->
+
+    <!--ONCLICK EXAMPLE-->
 </body>
 <script src="./index.js"></script>
 </html>
