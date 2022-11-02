@@ -73,7 +73,7 @@ p {
     background-color: lightgrey;
     width: 100px;
     height: 100px;
-    border: 10px dotted black;
+    border: 10px dotted yellow;
     /*border provides the visual settings between marging and padding*/
     /*receive 3 values: border thickness, border type and border color*/
     border-radius: 20px; /*used to round the border*/
@@ -83,7 +83,7 @@ p {
     background-color: lightgrey;
     width: 100%;
     height: 100px;
-    border: 10px double black;
+    border: 10px double blue;
     border-radius: 80px;
 }
 
@@ -195,9 +195,8 @@ span {
     height: 100px;
     overflow: auto;
     /*Overflow is used when elements are too big for a div for example, then you can adjust it using overflow*/
-    /*is you select 'auto', it will adjust better for each case*/
+    /*if you select 'auto', it will adjust better for each case*/
     /*can be defined according to axle using overflow-x or overflow-y*/
-
 }
 
 p.float {
@@ -205,7 +204,6 @@ p.float {
     float: left;
     /*float defines in which position the element will be placed*/
     /*is not too used anymore since flexbox is more popular*/
-
 }
 
 /*===============================================================================*/
@@ -248,7 +246,7 @@ p.float {
 #son {
     width: 500px;
     height: 150px;
-    background-color: pink;
+    background-color: rgb(208, 16, 48);
     font-size: 0.5rem;
     /*em uses the reference of father container so in this case the font size will be 15px (30px * 0.5)*/
     /*it works for other parameters as well, like border-radius for example*/
