@@ -14,6 +14,16 @@ allow manipulations, content change, classes and attributes. The object 'documen
         .red {
             color: red;
         }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+        }
+
     </style>
 </head>
 <body>
@@ -21,8 +31,8 @@ allow manipulations, content change, classes and attributes. The object 'documen
     <!--DOM EXAMPLE-->
 
 <!--
-    <p>Hello world!</p>
--->  
+   <p>Hello world!</p> 
+--> 
 
     <!--CONSOLE EXAMPLE-->
 
@@ -348,7 +358,135 @@ allow manipulations, content change, classes and attributes. The object 'documen
 
 -->
 
-    <!--ONCLICK EXAMPLE-->
+    <!--ONCLICK, ONMOUSEOVER & ONMOUSEOUT EXAMPLE-->
+
+<!--
+
+    <button onclick="greetings()">Say hello</button>
+    <!- -using onclick method we are calling the function 'greetings' to be executed whenever user click on the button- ->
+    
+    <button onclick="displayBox()">Show box</button>
+    <!- -the same idea as above, calling 'displayBox function'- ->
+
+    <button onclick="hideBox()">Hide box</button>
+    <!- -the same idea as above, calling 'hideBox function'- ->
+
+    <div id="box"></div>
+
+    <p onmouseout="changeText()">Mouse over here</p>
+    <!- -calling the function 'changeText' when mouse hovers and leave the element- ->
+
+    <script>
+        function greetings () {
+            //in this function we are calling an alert to be displayed on screen
+            alert('Hello :)');
+        }
+
+        function displayBox () {
+            //here we are getting div box and inserting it inside a constant
+            const box = document.getElementById('box');
+
+            //then we change the display settings previously defined as 'none' in style (line 9) to block
+            box.style.display = 'block';
+        }
+
+        function hideBox () {
+            const box = document.getElementById ('box');
+            box.style.display = 'none';
+        }
+
+        function changeText () {
+            const text = document.querySelector('p');
+            text.innerHTML = "Text changed with 'OnMouseOver/Out'!";
+            //the difference between onmouseover and onmouse out is:
+            //OnMouseOver: when you hover the element, the action will be applied instantly
+            //OnMouseOut: the action will be applied only after the mouse be out of the element
+        }
+    </script>
+
+-->
+
+    <!--ONLOAD & ONSUBMIT EXAMPLE-->
+
+<!--
+
+    <body onload="loadPage()">
+        <!- -with 'onLoad' method we can call a function to do whatever we define when the page is being loaded- ->
+
+        <form onsubmit="sendForm()">
+            <!- -when the form be submitted, the function 'sendForm' will be executed, validating some information as described below- ->
+
+            <label>Insert your age:</label>
+            <input type="number" id="age" placeholder="18">
+            <button type="submit">Submit</button>
+
+        </form>
+        
+        <script>
+
+            function loadPage() {
+                //here we are just calling an alert to inform that the page is loaded
+                alert('Page loaded!')
+            }
+            
+            function sendForm () {
+                const age = document.getElementById('age');
+                if(age.value < 18) {
+                    alert('Minor detected!')
+                } else {
+                    alert('Your age is ok.')
+                }
+            }
+
+        </script> 
+    </body>
+-->
+
+    <!--ADDEVENTLISTENER EXAMPLE-->
+
+    <form id="form">
+        <label>Insert your age:</label>
+        <input type="number" id="age" placeholder="18">
+        <button type="submit">Submit</button> <br><br>
+        <button type="button" id="btn-hello">Click to get a hello</button>
+    </form>
+    
+    <script>
+        const form = document.getElementById ('form');
+
+        form.addEventListener('submit', sendForm);
+        //the method 'addEventListener' receive 2 parameters: the action and the function to be called 
+        //using this, we can do the same as mentioned in the section above without calling the functions directly in HTML tag
+        
+        function sendForm (e) {
+            //here we are passing an event inside the argument of the function
+
+            e.preventDefault();
+            //this 'preventDefault' will stop the page being reloaded after form submission
+
+            const age = document.getElementById('age');
+            if(age.value < 18) {
+                alert('Minor detected!')
+            } else {
+                alert('Your age is ok.')
+            }
+        }
+
+        const hello = document.getElementById ('btn-hello');
+        //getting the hello button to execute the listener below
+
+        hello.addEventListener('click', function() {
+            alert('Hello!')
+        })
+        //here we are adding an event listener when clicking the button and declaring the function inside the second parameter
+        //is just to show that is possible but not recommended
+
+        //IMPORTANT: by standard, all buttons you create inside a form will be typed as 'submit'
+        //so when adding the listener with submit is necessary to pay attention if you have more than 1 button in the form to change the type accordingly
+
+    </script> 
+
+
 </body>
 <script src="./index.js"></script>
 </html>
