@@ -1,24 +1,25 @@
+print('Welcome to Python 101: Split and Join')
 # ----------------------------
-# SPLIT
+print('\nSPLIT')
 # ----------------------------
 msg = 'Welcome to Python 101: Split and Join'
 csv = 'Eric,John,Michael,Terry,Graham'
-friends_list = ['Eric','John','Michael','Terry','Graham']
-print('Welcome to Python 101: Split and Join')
+friends_list = ['Eric', 'John', 'Michael', 'Terry', 'Graham']
 
 # Split transforms a string into a list
-print(list(msg)) # Creates a list but splitting each character separately
-print(msg.split()) # Now the string is transformed into a list with the words splitted separately
-print(msg.split(':')) # It is possible to define in the argument where you want to split the string
+print(list(msg))  # Creates a list but splitting each character separately
+print(msg.split())  # Now the string is transformed into a list with the words splitted separately
+print(msg.split(':'))  # It is possible to define in the argument where you want to split the string
 
 print('')
 
 # ----------------------------
-# JOIN
+print('\nJOIN')
 # ----------------------------
 # Join does the opposite, transforms a list into a string
-print(str(friends_list)) # Casting into a string does not bring the expected result, because it still looks like a list
-print(''.join(friends_list))  # Now we have a string based on the list,
+print(str(friends_list))  # Casting into a string does not bring the expected result, because it still looks like a list
+print(','.join(friends_list))  # Now we have a string based on the list,
+print('\n'.join(friends_list))  # Printing each item in a new line
 # the first argument is the character you want to define as the separating character
 
 print('')
@@ -26,11 +27,11 @@ print('')
 # We can do multiple operations using split and join
 # We also can use replace as an option, for example, to remove blank spaces in msg string:
 print(''.join(msg.split()))
-print(msg.replace(' ',''))
+print(msg.replace(' ', ''))
 print(' ')
 
 # ----------------------------
-# EXERCISE
+print('\nEXERCISE')
 # ----------------------------
 # From the list above fill a list(friends_list) properly
 # with the names of all the friends. One per "slot"
@@ -48,5 +49,5 @@ print(','.join(csv.split(';')).split(':'))
 print(','.join(','.join(csv.split(';')).split(':')))
 print((','.join(','.join(csv.split(';')).split(':'))).split(','))
 print(' ')
-friends_list = ((csv.replace(':',',').replace(';',',')).split(','))
+friends_list = ((csv.replace(':', ',').replace(';', ',')).split(','))
 print(friends_list)
