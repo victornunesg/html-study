@@ -90,7 +90,9 @@ de 25 anos possuem salário inferior à média de todos os salários.
 #         print(f'{meses[i]}, Temperatura: {temperatura} graus Celsius')
 
 """
-5. As Organizações Tabajara resolveram dar um abono aos seus colaboradores em reconhecimento ao bom resultado alcançado
+5. ABONO SALARIAL
+
+As Organizações Tabajara resolveram dar um abono aos seus colaboradores em reconhecimento ao bom resultado alcançado
 durante o ano que passou. Para isto contratou você para desenvolver a aplicação que servirá como uma projeção de quanto
 será gasto com o pagamento deste abono.
 Após reuniões envolvendo a diretoria executiva, a diretoria financeira e os representantes do sindicato laboral,
@@ -135,31 +137,101 @@ Valor mínimo pago a 3 colaboradores
 Maior valor de abono pago: R$ 900.00
 """
 
-lista_salarios = [1000, 300, 500, 200, 1500, 3000, 3400, 5000, 7000, 2000, 600, 800, 250, 1500, 20000]
-abonos = []
+# lista_salarios = [1000, 300, 500, 200, 1500, 3000, 3400, 5000, 7000, 2000, 600, 800, 250, 1500, 20000]
+# abonos = []
+#
+# print('\nProjeção de Gastos com Abono\n============================ ')
+# # O salário de cada funcionário, juntamente com o valor do abono;
+# print('\nSalário    - Abono   ')
+# for i, salarios in enumerate(lista_salarios):
+#     if (salarios * 0.2) < 100:
+#         abonos.append(100)
+#     else:
+#         abonos.append(salarios * 0.2)
+#     print('R$ {:.2f} - R$ {:.2f}'.format(salarios, abonos[i]))
+#
+# # O número total de funcionário processados;
+# print(f'\nForam processados {len(abonos)} colaboradores.')
+#
+# # O valor total a ser gasto com o pagamento do abono;
+# print('Total gasto com abonos: R$ {:.2f}'.format(sum(abonos)))
+#
+# # O número de funcionário que receberá o valor mínimo de 100 reais;
+# contador = 0
+# for abono in abonos:
+#     if abono == 100:
+#         contador += 1
+# print(f'Valor mínimo pago a {contador} colaboradores')
+#
+# # O maior valor pago como abono;
+# print('Maior valor de abono pago: R$ {:.2f}'.format(max(abonos)))
 
-print('\nProjeção de Gastos com Abono\n============================ ')
-# O salário de cada funcionário, juntamente com o valor do abono;
-print('\nSalário    - Abono   ')
-for i, salarios in enumerate(lista_salarios):
-    if (salarios * 0.2) < 100:
-        abonos.append(100)
-    else:
-        abonos.append(salarios * 0.2)
-    print('R$ {:.2f} - R$ {:.2f}'.format(salarios, abonos[i]))
+"""
+6. RELATÓRIO DE CONSUMO
 
-# O número total de funcionário processados;
-print(f'\nForam processados {len(abonos)} colaboradores.')
+Faça um programa que carregue uma lista com os modelos de cinco carros (exemplo de modelos: FUSCA, GOL, VECTRA etc).
+Carregue uma outra lista com o consumo desses carros, isto é, quantos quilômetros cada um desses carros faz com um litro
+de combustível. Calcule e mostre:
 
-# O valor total a ser gasto com o pagamento do abono;
-print('Total gasto com abonos: R$ {:.2f}'.format(sum(abonos)))
+a. O modelo do carro mais econômico;
+b. Quantos litros de combustível cada um dos carros cadastrados consome para percorrer uma distância de 1000 quilômetros
+e quanto isto custará, considerando um que a gasolina custe R$ 2,25 o litro. Abaixo segue uma tela de exemplo. A disposi
+ção das informações deve ser o mais próxima possível ao exemplo. Os dados são fictícios e podem mudar a cada execução do
+programa.
+"""
+# print('Comparativo de Consumo de Combustível')
+# veiculos = ['fusca', ' gol', 'uno', 'vectra', 'peugeot']
+# autonomias = [7, 10, 12.5, 9, 14.5]
+# consumo = []
+# despesa = []
+#
+# for i in range(len(veiculos)):
+#     print(f'Veiculo {i+1}\nNome: {veiculos[i]}\nKm por litro: {autonomias[i]} km/l')
+#     consumo.append(1000/autonomias[i])
+#     despesa.append(consumo[i] * 2.25)
+#
+# print('Relatório Final')
+# for j in range(len(veiculos)):
+#     print('{} - {} -  {} - {:.1f} litros - R$ {:.2f}'.format(j+1, veiculos[j], autonomias[j], consumo[j], despesa[j]))
+#
+# i = consumo.index(min(consumo))
+# print(f'O menor consumo é do {veiculos[i]}')
 
-# O número de funcionário que receberá o valor mínimo de 100 reais;
-contador = 0
-for abono in abonos:
-    if abono == 100:
-        contador += 1
-print(f'Valor mínimo pago a {contador} colaboradores')
+"""
+7. 
 
-# O maior valor pago como abono;
-print('Maior valor de abono pago: R$ {:.2f}'.format(max(abonos)))
+Uma empresa paga seus vendedores com base em comissões. O vendedor recebe $200 por semana mais 9 por cento de suas
+vendas brutas daquela semana. Por exemplo, um vendedor que teve vendas brutas de \$3000 em uma semana recebe \$200 mais
+9 por cento de \$3000, ou seja, um total de \$470.
+
+Escreva um programa (usando um array de contadores) que determine quantos vendedores receberam salários nos seguintes
+intervalos de valores: <pre> 
+200
+−
+299 
+300
+−
+399 
+400
+−
+499 
+500
+−
+599 
+600
+−
+699 
+700
+−
+799 
+800
+−
+899 
+900
+−
+999 $1000 em diante
+Existem várias formas de fazer. Faça primeiro da forma que parecer mais intuitiva para você.
+
+Em seguida, caso queira um desafio: Desafio: Crie uma forma para chegar na posição da lista a partir do salário, sem fazer vários ifs aninhados.
+"""
+
