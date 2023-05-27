@@ -7,6 +7,8 @@ print("3.***Loops are great***")
 print("4.****Loops are great****")
 print("5.*****Loops are great*****")
 
+# no while iremos executar uma qtde indefinida de vezes
+# podemos usar quando não sabemos o tamanho de algo
 # Three Loop Questions:
 # 1. What do I want to repeat?
 #  -> message
