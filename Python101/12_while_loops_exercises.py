@@ -45,10 +45,26 @@ Podemos fazer o While de 2 maneiras:
 """
 1. Faça um programa que peça uma nota, entre zero e dez. Mostre uma mensagem caso o valor seja inválido e continue
 pedindo até que o usuário informe um valor válido.
+"""
 
+# nota = float(input('\n Insira uma nota entre 0 e 10: '))
+# while nota < 0 or nota > 10:
+#     print('\n Nota inválida!')
+#     nota = float(input(' Insira uma nota entre 0 e 10: '))
+
+"""
 2. Faça um programa que leia um nome de usuário e a sua senha e não aceite a senha igual ao nome do usuário, mostrando
 uma mensagem de erro e voltando a pedir as informações.
+"""
 
+# usuario = input('\n Insira o nome de usuario: ')
+# senha = input(' Senha: ')
+# while senha == usuario:
+#     print('\nErro! A senha deve ser diferente ao nome de usuario!')
+#     usuario = input('\n Insira o nome de usuario: ')
+#     senha = input(' Senha: ')
+
+"""
 3. Faça um programa que leia e valide as seguintes informações (e para cada uma delas, continue pedindo a informação até
 o usuário inserir corretamente):
 
@@ -57,15 +73,88 @@ Idade: entre 0 e 150;
 Salário: maior que zero;
 Sexo: 'f' ou 'm';
 Estado Civil: 's', 'c', 'v', 'd';
+"""
 
+# nome = input(' Nome: ')
+# while len(nome) <= 3:
+#     print('Erro, dados invalidos!')
+#     nome = input(' Nome: ')
+#
+# idade = int(input(' Idade: '))
+# while idade < 0 or idade > 150:
+#     print('Erro, dados invalidos!')
+#     idade = int(input(' Idade: '))
+#
+# salario = float(input(' Salario (R$): '))
+# while salario <= 0:
+#     print('Erro, dados invalidos!')
+#     salario = float(input(' Salario (R$): '))
+#
+# sexo = input(' Sexo ("m" ou "f": ')
+# while sexo not in ('m', 'f'):
+#     print('Erro, dados invalidos!')
+#     sexo = input(' Sexo ("m" ou "f"): ')
+#
+# estadocivil = input(' Estado Civil: ')
+# while estadocivil not in ('s', 'c', 'v', 'd'):
+#     print('Erro, dados invalidos!')
+#     estadocivil = input(' Estado Civil: ')
+
+"""
 4. Supondo que a população de um país A seja da ordem de 80000 habitantes com uma taxa anual de crescimento de 3% e que
 a população de B seja 200000 habitantes com uma taxa de crescimento de 1.5%. Faça um programa que calcule e escreva o
 número de anos necessários para que a população do país A ultrapasse ou iguale a população do país B, mantidas as taxas
 de crescimento.
+"""
 
+pop_a = 80000
+tax_a = 1.03
+pop_b = 200000
+tax_b = 1.015
+anos = 0
+
+while pop_a < pop_b:
+    pop_a = pop_a * tax_a
+    pop_b = pop_b * tax_b
+    anos += 1
+
+print(f'Com as taxas de crescimento, levou-se {anos} anos para igualar as populacoes')
+
+"""
 5. Altere o programa anterior permitindo ao usuário informar as populações e as taxas de crescimento iniciais. Valide a
 entrada e permita repetir a operação.
+"""
 
+pop_a = int(input('População do País A: '))
+while pop_a <= 0:
+    print('A população deve ser um inteiro maior que zero!')
+    pop_a = int(input('População do País A: '))
+
+tax_a = float(input('Taxa de crescimento do País A (0 - 100%): '))
+while not (1 <= tax_a <= 100):
+    print('A taxa de crescimento deve ser um numero entre 0 e 100!')
+    tax_a = float(input('Taxa de crescimento do País A (0 - 100%): '))
+
+pop_b = int(input('População do País B: '))
+while pop_b <= 0:
+    print('A população deve ser um inteiro maior que zero!')
+    pop_b = int(input('População do País B: '))
+
+tax_b = float(input('Taxa de crescimento do País B (0 - 100%): '))
+while not (1 <= tax_a <= 100):
+    print('A taxa de crescimento deve ser um numero entre 0 e 100!')
+    tax_b = float(input('Taxa de crescimento do País B (0 - 100%): '))
+
+anos = 0
+
+while pop_a < pop_b:
+    pop_a = pop_a * ((tax_a/100) + 1)
+    pop_b = pop_b * ((tax_b/100) + 1)
+    anos += 1
+
+print(f'Com as taxas de crescimento, levou-se {anos} anos para igualar as populacoes')
+
+"""
 6. Faça um programa que peça para o usuário inserir o faturamento dos últimos 5 meses (individualmente) e informe o
 maior faturamento
 
