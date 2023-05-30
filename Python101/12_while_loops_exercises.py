@@ -107,70 +107,135 @@ número de anos necessários para que a população do país A ultrapasse ou igu
 de crescimento.
 """
 
-pop_a = 80000
-tax_a = 1.03
-pop_b = 200000
-tax_b = 1.015
-anos = 0
-
-while pop_a < pop_b:
-    pop_a = pop_a * tax_a
-    pop_b = pop_b * tax_b
-    anos += 1
-
-print(f'Com as taxas de crescimento, levou-se {anos} anos para igualar as populacoes')
+# pop_a = 80000
+# tax_a = 1.03
+# pop_b = 200000
+# tax_b = 1.015
+# anos = 0
+#
+# while pop_a < pop_b:
+#     pop_a = pop_a * tax_a
+#     pop_b = pop_b * tax_b
+#     anos += 1
+#
+# print(f'Com as taxas de crescimento, levou-se {anos} anos para igualar as populacoes')
 
 """
 5. Altere o programa anterior permitindo ao usuário informar as populações e as taxas de crescimento iniciais. Valide a
 entrada e permita repetir a operação.
 """
 
-pop_a = int(input('População do País A: '))
-while pop_a <= 0:
-    print('A população deve ser um inteiro maior que zero!')
-    pop_a = int(input('População do País A: '))
-
-tax_a = float(input('Taxa de crescimento do País A (0 - 100%): '))
-while not (1 <= tax_a <= 100):
-    print('A taxa de crescimento deve ser um numero entre 0 e 100!')
-    tax_a = float(input('Taxa de crescimento do País A (0 - 100%): '))
-
-pop_b = int(input('População do País B: '))
-while pop_b <= 0:
-    print('A população deve ser um inteiro maior que zero!')
-    pop_b = int(input('População do País B: '))
-
-tax_b = float(input('Taxa de crescimento do País B (0 - 100%): '))
-while not (1 <= tax_a <= 100):
-    print('A taxa de crescimento deve ser um numero entre 0 e 100!')
-    tax_b = float(input('Taxa de crescimento do País B (0 - 100%): '))
-
-anos = 0
-
-while pop_a < pop_b:
-    pop_a = pop_a * ((tax_a/100) + 1)
-    pop_b = pop_b * ((tax_b/100) + 1)
-    anos += 1
-
-print(f'Com as taxas de crescimento, levou-se {anos} anos para igualar as populacoes')
+# pop_a = int(input('População do País A: '))
+# while pop_a <= 0:
+#     print('A população deve ser um inteiro maior que zero!')
+#     pop_a = int(input('População do País A: '))
+#
+# tax_a = float(input('Taxa de crescimento do País A (0 - 100%): '))
+# while not (1 <= tax_a <= 100):
+#     print('A taxa de crescimento deve ser um numero entre 0 e 100!')
+#     tax_a = float(input('Taxa de crescimento do País A (0 - 100%): '))
+#
+# pop_b = int(input('População do País B: '))
+# while pop_b <= 0:
+#     print('A população deve ser um inteiro maior que zero!')
+#     pop_b = int(input('População do País B: '))
+#
+# tax_b = float(input('Taxa de crescimento do País B (0 - 100%): '))
+# while not (1 <= tax_a <= 100):
+#     print('A taxa de crescimento deve ser um numero entre 0 e 100!')
+#     tax_b = float(input('Taxa de crescimento do País B (0 - 100%): '))
+#
+# anos = 0
+#
+# while pop_a < pop_b:
+#     pop_a = pop_a * ((tax_a/100) + 1)
+#     pop_b = pop_b * ((tax_b/100) + 1)
+#     anos += 1
+#
+# print(f'Com as taxas de crescimento, levou-se {anos} anos para igualar as populacoes')
 
 """
 6. Faça um programa que peça para o usuário inserir o faturamento dos últimos 5 meses (individualmente) e informe o
 maior faturamento
+"""
 
+# faturamentos = [0, 0, 0, 0, 0]
+# i = 0
+#
+# while i < 5:
+#     faturamentos[i] = float(input(f'Faturamento do mês {i+1}: '))
+#     i += 1
+# print(f'Maior faturamento: {max(faturamentos)}')
+
+"""
 7. Faça um programa que peça para o usuário inserir o faturamento dos últimos 5 meses (individualmente) e informe o
 faturamento total (soma) e o faturamento médio por mês (média).
+"""
 
+# fat_total = 0
+# fat_mensal = 0
+# for i in range(5):
+#     fat_mensal = float(input(f'Faturamento do mês {i+1}: '))
+#     fat_total += fat_mensal
+# print(f'Faturamento total: {fat_total}')
+# print(f'Faturamento médio: {fat_total/5}')
+
+"""
 8. Faça um programa que consiga categorizar a idade das equipes de uma empresa. Faça um programa que peça para n pessoas
 a sua idade, ao final o programa devera verificar se a média de idade da equipe varia entre 0 e 25 (jovem) ,26 e 60
 (sênior) e maior que 60 (idosa); e então, dizer se a equipe é jovem, sênior ou idosa, conforme a média calculada.
+"""
 
+# n = int(input('Insira a quantidade de pessoas da empresa: '))
+#
+# soma = 0
+# for i in range(n):
+#     idade = int(input(f'Idade da pessoa {i+1}: '))
+#     soma += idade
+#     i += 1
+#
+# print(soma)
+# media = soma/n
+
+# if 0 <= media <= 25:
+#     print('A equipe é jovem!')
+# elif 25 < media <= 60:
+#     print('A equipe é sênior!')
+# else:
+#     print('A equipe é idosa!')
+
+"""
 9. Numa eleição existem três candidatos. Faça um programa que peça o número total de eleitores. Peça para cada eleitor
 votar e ao final mostrar o número de votos de cada candidato.
+"""
 
+# eleitores = int(input('Insira a quantidade de eleitores: '))
+# votacao = [0, 0, 0]
+#
+# for i in range(eleitores):
+#     voto = int(input('Vote no candidato (1, 2 ou 3): '))
+#     while voto not in (1, 2, 3):
+#         print('Voto inválido!')
+#         voto = int(input('Vote no candidato (1, 2 ou 3): '))
+#     votacao[voto-1] += 1
+#
+# vencedor = votacao.index(max(votacao))
+# print(f'Vencedor das eleições: Candidato {vencedor+1}')
+
+"""
 10. Faça um programa que calcule o valor total investido por um colecionador em sua coleção de CDs e o valor médio gasto
 em cada um deles. O usuário deverá informar a quantidade de CDs e o valor para em cada um.
+"""
 
+# qtde = int(input('Insira a quantidade de CDs: '))
+# total = 0
+# for i in range(qtde):
+#     valor = float(input(f'Valor (R$) do CD{i+1}: '))
+#     total += valor
+# print(f'Total gasto (R$): {total}')
+# print(f'Valor médio por CD (R$): {total/qtde}')
+
+"""
 11. O Sr. Manoel Joaquim possui uma grande loja de artigos de R$ 1,99, com cerca de 10 caixas. Para agilizar o cálculo
 de quanto cada cliente deve pagar ele desenvolveu um tabela que contém o número de itens que o cliente comprou e ao lado
 o valor da conta. Desta forma a atendente do caixa precisa apenas contar quantos itens o cliente está levando e olhar na
@@ -183,3 +248,23 @@ Lojas Quase Dois - Tabela de preços
 ...
 50 - R$ 99.50
 """
+
+# print('Lojas Quase Dois - Tabela de preços')
+# for i in range(50):
+#     print(f'{i+1} - R$ {1.99 * (i+1):.2f}')
+
+"""
+12. Um funcionário de uma empresa recebe aumento salarial anualmente:
+Sabe-se que:
+- Esse funcionário foi contratado em 1995, com salário inicial de R$ 1.000,00;
+- Em 1996 recebeu aumento de 1,5% sobre seu salário inicial;
+A partir de 1997 (inclusive), os aumentos salariais sempre correspondem ao dobro do percentual do ano anterior. Faça um
+programa que determine o salário desse funcionário em 2003.
+"""
+
+aumento = 0.015
+salario = 1000 * 1.015
+for i in range(1997, 2004):
+    aumento = aumento * 2
+    salario = salario * (1 + aumento)
+print('O salário em 2003 era R$ {:.2f}'.format(salario))
