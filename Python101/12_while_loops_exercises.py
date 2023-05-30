@@ -262,9 +262,105 @@ A partir de 1997 (inclusive), os aumentos salariais sempre correspondem ao dobro
 programa que determine o salário desse funcionário em 2003.
 """
 
-aumento = 0.015
-salario = 1000 * 1.015
-for i in range(1997, 2004):
-    aumento = aumento * 2
-    salario = salario * (1 + aumento)
-print('O salário em 2003 era R$ {:.2f}'.format(salario))
+# aumento = 0.015
+# salario = 1000 * 1.015
+# for i in range(1997, 2004):
+#     aumento = aumento * 2
+#     salario = salario * (1 + aumento)
+# print('O salário em 2003 era R$ {:.2f}'.format(salario))
+
+"""
+13. O cardápio de uma lanchonete é o seguinte:
+Especificação   Código  Preço
+Cachorro Quente 100     R$ 1,20
+Bauru Simples   101     R$ 1,30
+Bauru com ovo   102     R$ 1,50
+Hambúrguer      103     R$ 1,20
+Cheeseburguer   104     R$ 1,30
+Refrigerante    105     R$ 1,00
+Faça um programa que leia o código dos itens pedidos e as quantidades desejadas. Calcule e mostre o valor a ser pago por
+item (preço * quantidade) e o total geral do pedido. Considere que o cliente deve informar quando o pedido deve ser
+encerrado.
+"""
+# total = 0
+# qtde = 0
+#
+# cardapio = [100, 1.20, 101, 1.30, 102, 1.50, 103, 1.20, 104, 1.30, 105, 1.00]
+#
+# codigo_pedido = int(input('Digite o código do pedido ou digite 0 para sair: '))
+# while codigo_pedido != 0:
+#     qtde = int(input('Quantidade: '))
+#     total += cardapio[cardapio.index(codigo_pedido) + 1] * qtde
+#     print(f'Total parcial: R$ {total:.2f}')
+#     codigo_pedido = int(input('Digite o código do pedido ou digite 0 para sair: '))
+#
+# print(f'Total do pedido: R$ {total:.2f}')
+
+"""
+14. Uma grande emissora de televisão quer fazer uma enquete entre os seus telespectadores para saber qual o melhor
+jogador após cada jogo. Para isto, faz-se necessário o desenvolvimento de um programa, que será utilizado pelas
+telefonistas, para a computação dos votos. Sua equipe foi contratada para desenvolver este programa, utilizando a
+linguagem de programação Python. Para computar cada voto, a telefonista digitará um número, entre 1 e 23, correspondente
+ao número da camisa do jogador. Um número de jogador igual zero, indica que a votação foi encerrada. Se um número
+inválido for digitado, o programa deve ignorá-lo, mostrando uma breve mensagem de aviso, e voltando a pedir outro número
+Após o final da votação, o programa deverá exibir:
+
+a. O total de votos computados;
+b. Os números e respectivos votos de todos os jogadores que receberam votos;
+c. O percentual de votos de cada um destes jogadores;
+d. O número do jogador escolhido como o melhor jogador da partida, juntamente com o número de votos e o percentual de
+votos dados a ele.
+
+Observe que os votos inválidos e o zero final não devem ser computados como votos. O resultado aparece ordenado pelo
+número do jogador. O programa deve fazer uso de arrays. O programa deverá executar o cálculo do percentual de cada
+jogador através de uma função. Esta função receberá dois parâmetros: o número de votos de um jogador e o total de votos.
+A função calculará o percentual e retornará o valor calculado. Abaixo segue uma tela de exemplo. A disposição das infor
+mações deve ser o mais próxima possível ao exemplo. Os dados são fictícios e podem mudar a cada execução do programa.
+
+Ao final, o programa deve ainda gravar os dados referentes ao resultado da votação em um arquivo texto no disco, obede
+cendo a mesma disposição apresentada na tela.
+
+Enquete: Quem foi o melhor jogador?
+
+Número do jogador (0=fim): 9
+Número do jogador (0=fim): 10
+Número do jogador (0=fim): 9
+Número do jogador (0=fim): 10
+Número do jogador (0=fim): 11
+Número do jogador (0=fim): 10
+Número do jogador (0=fim): 50
+Informe um valor entre 1 e 23 ou 0 para sair!
+Número do jogador (0=fim): 9
+Número do jogador (0=fim): 9
+Número do jogador (0=fim): 0
+
+Resultado da votação:
+
+Foram computados 8 votos.
+
+Jogador       Votos               %
+9               4               50,0%
+10              3               37,5%
+11              1               12,5%
+"""
+
+# votos = []
+# print('Enquete: Quem foi o melhor jogador?\n')
+#
+# for i in range(23):
+#     votos.append(0)
+#
+# voto = int(input('Número do jogador (0 = encerrar votação): '))
+# while voto != 0:
+#     votos[voto - 1] += 1
+#     voto = int(input('Número do jogador (0 = encerrar votação): '))
+#
+# print('\nResultado da votação:')
+# print(f'Foram computados {sum(votos)} votos.')
+# print('\nJogador\tVotos\t%')
+# for i in range(23):
+#     print(f'#{i+1}\t{votos[i]}\t{votos[i]/sum(votos):.2%}')
+#
+# print(f'\nMelhor jogador da partida: #{votos.index(max(votos)) +1}')
+# print(f'Total de votos: {votos[votos.index(max(votos))]} votos.')
+# print(f'% de votos: {votos[votos.index(max(votos))] / sum(votos):.2%}')
