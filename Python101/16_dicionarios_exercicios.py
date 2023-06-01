@@ -91,29 +91,29 @@ can you find 'them'? Do you know why? May require knowledge of actual python 'lo
 2. Quanto foi vendido de 'notebook asus' e de 'ipad'?
 3. Quais produtos venderam mais de 5000 unidades?
 """
-mais_vendidos = {'tecnologia': 'iphone', 'refrigeracao': 'ar consul 12000 btu', 'livros': 'o alquimista',
-                 'eletrodoméstico': 'geladeira', 'lazer': 'prancha surf'}
-
-vendas_tecnologia = {'iphone': 15000, 'samsung galaxy': 12000, 'tv samsung': 10000, 'ps5': 14300, 'tablet': 1720,
-                     'ipad': 1000, 'tv philco': 2500, 'notebook hp': 1000, 'notebook dell': 17000,
-                     'notebook asus': 2450}
-
-# Resposta do item 1
-livro = mais_vendidos['livros']
-lazer = mais_vendidos['lazer']
-print(f'Livro mais vendido: {livro}')
-print(f'Lazer mais vendido: {lazer}')
-
-# Resposta do item 2 - Usando o método GET
-notebook = vendas_tecnologia.get('notebook asus')
-ipad = vendas_tecnologia.get('ipad')
-print(f'Vendas de Notebook Asus: {notebook} unidades')
-print(f'Vendas de iPad: {ipad} unidades')
-
-# Resposta do item 3 - Usando o método ITEMS dentro de um FOR (UNPACKING)
-for produto, unidades in vendas_tecnologia.items():
-    if vendas_tecnologia[produto] > 5000:
-        print(f'Produto: {produto}. Vendas: {unidades} unidades vendidas.')
+# mais_vendidos = {'tecnologia': 'iphone', 'refrigeracao': 'ar consul 12000 btu', 'livros': 'o alquimista',
+#                  'eletrodoméstico': 'geladeira', 'lazer': 'prancha surf'}
+#
+# vendas_tecnologia = {'iphone': 15000, 'samsung galaxy': 12000, 'tv samsung': 10000, 'ps5': 14300, 'tablet': 1720,
+#                      'ipad': 1000, 'tv philco': 2500, 'notebook hp': 1000, 'notebook dell': 17000,
+#                      'notebook asus': 2450}
+#
+# # Resposta do item 1
+# livro = mais_vendidos['livros']
+# lazer = mais_vendidos['lazer']
+# print(f'Livro mais vendido: {livro}')
+# print(f'Lazer mais vendido: {lazer}')
+#
+# # Resposta do item 2 - Usando o método GET
+# notebook = vendas_tecnologia.get('notebook asus')
+# ipad = vendas_tecnologia.get('ipad')
+# print(f'Vendas de Notebook Asus: {notebook} unidades')
+# print(f'Vendas de iPad: {ipad} unidades')
+#
+# # Resposta do item 3 - Usando o método ITEMS dentro de um FOR (UNPACKING)
+# for produto, unidades in vendas_tecnologia.items():
+#     if vendas_tecnologia[produto] > 5000:
+#         print(f'Produto: {produto}. Vendas: {unidades} unidades vendidas.')
 
 """ 1. Identificando Locais de Risco
 
@@ -253,3 +253,36 @@ dados mesmo, mas o dicionário acima já vale o exemplo. """
 #
 # # Como queremos printar o link da source, então basta acessarmos a chave 'link' dentro desse dicionário
 # print(video['download'][0]['link'])
+
+""" Exercício "menos prático" para treinar manipulação de dicionário
+
+Dessa vez, vamos apenas treinar a manipulação de dicionário.
+Transforme as listas abaixo em 1 único dicionário no formato:
+
+dicionario = {
+    produto: [vendas2019, vendas2020],
+    produto2: [vendas2019, vendas2020],
+    produto3: [vendas2019, vendas2020],
+    ...
+}
+
+Apesar de parecer "menos prático" esse é um procedimento que precisamos nos acostumar a fazer, visto que algumas funções
+(tema dos próximos módulos) precisam de dicionários para funcionar e saber transformar listas em dicionários
+(e vice-versa) é uma habilidade muito útil
+
+Obs: Lembre do zip para juntar listas.
+Obs2: Repare que cada item das vendas é na verdade uma lista. Então é provável que você precise fazer esse código em 2
+etapas """
+
+# produtos = ['iphone', 'galaxy', 'ipad', 'tv', 'máquina de café', 'kindle', 'geladeira', 'adega', 'notebook dell',
+#             'notebook hp', 'notebook asus', 'microsoft surface', 'webcam', 'caixa de som', 'microfone',
+#             'câmera canon']
+# vendas2019 = [558147, 712350, 573823, 405252, 718654, 531580, 973139, 892292, 422760, 154753, 887061, 438508, 237467,
+#               489705, 328311, 591120]
+# vendas2020 = [951642, 244295, 26964, 787604, 867660, 78830, 710331, 646016, 694913, 539704, 324831, 667179, 295633,
+#               725316, 644622, 994303]
+#
+# vendas = zip(vendas2019, vendas2020)
+# vendas_produtos = zip(produtos, vendas)
+# dicionario = dict(vendas_produtos)
+# print(dicionario)

@@ -264,7 +264,7 @@ print('Faturamento foi {:+} e lucro foi {:+}'.format(faturamento, lucro))
 
 """- Formato com casas Decimais fixas"""
 
-custo = 500
+custo = 5006
 faturamento = 270
 lucro = faturamento - custo
 print('Faturamento foi {:.2f} e lucro foi {:2f}'.format(faturamento, lucro))
