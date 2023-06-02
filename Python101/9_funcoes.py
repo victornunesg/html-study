@@ -134,9 +134,35 @@ ilustrado a seguir """
 # qtde_produtos = len(produtos)
 # print('Quantidade total de produtos:', qtde_produtos, 'texto2',  'texto3', sep='\n')
 
+print('\n===========================================================')
+print('VALORES PADRÃO PARA OS ARGUMENTOS DA FUNÇÃO')
+print('===========================================================')
+
+""" ESTRUTURA: 
+def minha_funcao(argumento = valor_padrao):
+    ...
+    return ..  
+
+Vamos criar uma função que padronize códigos de produtos. O default será padronizar os códigos para letras minúsculas
+(dado por 'm'), mas se o usuário quiser pode padronizar para maiúscula, dado por ('M').
+"""
 
 
+def padronizar_codigos(lista_codigos, padrao='m'):
+    for i, item in enumerate(lista_codigos):
+        item = item.replace('  ', ' ')
+        item = item.strip()
+        if padrao == 'm':
+            item = item.lower()
+        elif padrao == 'M':
+            item = item.upper()
+        lista_codigos[i] = item
+    return lista_codigos
 
+
+cod_produtos = [' ABC12 ', 'abc34', 'AbC37']
+print(padronizar_codigos(cod_produtos))
+print(padronizar_codigos(cod_produtos, 'M'))
 
 # def greeting(name1):
 #     print(f'Hello {name1}!')
