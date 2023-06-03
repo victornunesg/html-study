@@ -200,7 +200,8 @@ Obs:
     Compare com o caso do list.append para ver a diferença
 
 - list.remove(valor)<br>
-Remove o valor da lista (apenas a 1ª ocorrência, então caso haja 2 vezes o valor na lista, apenas a 1ª será removida). Além disso, dá um erro caso valor não exista dentro da lista.
+Remove o valor da lista (apenas a 1ª ocorrência, então caso haja 2 vezes o valor na lista, apenas a 1ª será removida).
+Além disso, dá um erro caso valor não exista dentro da lista.
 
 Uso:
     vendedores = ['João', 'Julia', 'Maria', 'Ana', 'Paulo', 'Marcus']
@@ -209,7 +210,8 @@ Resultado:
     vendedores = ['João', 'Julia', 'Ana', 'Paulo', 'Marcus']
 
 - list.pop(posicao)<br>
-Remove o item que está na posicao (índice) passado. Além disso, esse item é dado como resultado do pop, portanto pode ser armazenado em uma variável ou usado para outra coisa na mesma linha de código.
+Remove o item que está na posicao (índice) passado. Além disso, esse item é dado como resultado do pop, portanto pode
+ser armazenado em uma variável ou usado para outra coisa na mesma linha de código.
 
 Uso:<br>
     vendedores = ['João', 'Julia', 'Maria', 'Ana', 'Paulo', 'Marcus']<br>

@@ -16,18 +16,18 @@ Exemplo: vamos criar uma função de cadastro de um Produto.
 Essa função deve garantir que o produto cadastrado está em letra minúscula."""
 
 
-# def cadastrar_produto():
-#     produto = input('Digite o nome do produto que deseja cadastrar: ')
-#     produto = produto.casefold()  # método que coloca as letras em minúsculo (ou lower() serve tb)
-#     produto = produto.strip()  # método que remove espaços em branco na string
-#     return produto  # a partir dessa linha, a função não executa mais nada.
-#     # É o retorno/resposta da função, podemos armazenar em uma variável, conforme a seguir.
-#     # essa variável produto só existe dentro da função, diferentemente das variáveis do código
-#
-#
-# # usando a função para armazenar seu retorno em uma variável:
-# variavel_produto = cadastrar_produto()
-# print(variavel_produto)
+def cadastrar_produto():
+    produto = input('Digite o nome do produto que deseja cadastrar: ')
+    produto = produto.casefold()  # método que coloca as letras em minúsculo (ou lower() serve tb)
+    produto = produto.strip()  # método que remove espaços em branco na string
+    return produto  # a partir dessa linha, a função não executa mais nada.
+    # É o retorno/resposta da função, podemos armazenar em uma variável, conforme a seguir.
+    # essa variável produto só existe dentro da função, diferentemente das variáveis do código
+
+
+# usando a função para armazenar seu retorno em uma variável:
+variavel_produto = cadastrar_produto()
+print(variavel_produto)
 
 print('\n===========================================================')
 print('ARGUMENTOS/PARÂMETROS DA FUNÇÃO')
@@ -40,13 +40,13 @@ def minha_funcao(parametro1, parametro2, parametro3):
 """
 
 
-# def minha_soma(num1, num2, num3):
-#     return num1 + num2 + num3
-#
-#
-# # chamando a função com os argumentos
-# soma = minha_soma(10, 20, 0)
-# print(soma)
+def minha_soma(num1, num2, num3):
+    return num1 + num2 + num3
+
+
+# chamando a função com os argumentos
+soma = minha_soma(10, 20, 0)
+print(soma)
 
 """
 EXEMPLO PRÁTICO:
@@ -68,36 +68,36 @@ Repare que bebidas não alcóolicas começam com BSA e bebidas alcoolicas começ
 Crie um programa que analise uma lista de produtos e envie instruções para a equipe de estoque dizendo quais produtos
 devem ser enviados para a área de bebidas alcóolicas."""
 
-# produtos = ['beb46275', 'TFA23962', 'TFA64715', 'TFA69555', 'TFA56743', 'BSA45510', 'TFA44968', 'CAR75448',
-#             'CAR23596', 'CAR13490', 'BEB21365', 'BEB31623', 'BSA62419', 'BEB73344', 'TFA20079', 'BEB80694',
-#             'BSA11769', 'BEB19495', 'TFA14792', 'TFA78043', 'BSA33484', 'BEB97471', 'BEB62362', 'TFA27311',
-#             'TFA17715', 'BEB85146', 'BEB48898', 'BEB79496', 'CAR38417', 'TFA19947', 'TFA58799', 'CAR94811',
-#             'BSA59251', 'BEB15385', 'BEB24213', 'BEB56262', 'BSA96915', 'CAR53454', 'BEB75073']
-#
-#
-# def analise_produto(lista_produtos):
-#     print('Bebidas alcóolicas, conduzir à área correspondente:')
-#     for item in lista_produtos:
-#         if 'BEB' in item.upper():
-#             print(f'Item: {item}')
-#
-#
-# analise_produto(produtos)
-#
-# # Outra forma de fazer:
-#
-#
-# def ehalcoolico(bebida):
-#     bebida = bebida.upper()
-#     if 'BEB' in bebida:
-#         return True
-#     else:
-#         return False
-#
-#
-# for produto in produtos:
-#     if ehalcoolico(produto):
-#         print('Enviar {} para setor de bebidas alcóolicas'.format(produto))
+produtos = ['beb46275', 'TFA23962', 'TFA64715', 'TFA69555', 'TFA56743', 'BSA45510', 'TFA44968', 'CAR75448',
+            'CAR23596', 'CAR13490', 'BEB21365', 'BEB31623', 'BSA62419', 'BEB73344', 'TFA20079', 'BEB80694',
+            'BSA11769', 'BEB19495', 'TFA14792', 'TFA78043', 'BSA33484', 'BEB97471', 'BEB62362', 'TFA27311',
+            'TFA17715', 'BEB85146', 'BEB48898', 'BEB79496', 'CAR38417', 'TFA19947', 'TFA58799', 'CAR94811',
+            'BSA59251', 'BEB15385', 'BEB24213', 'BEB56262', 'BSA96915', 'CAR53454', 'BEB75073']
+
+
+def analise_produto(lista_produtos):
+    print('Bebidas alcóolicas, conduzir à área correspondente:')
+    for item in lista_produtos:
+        if 'BEB' in item.upper():
+            print(f'Item: {item}')
+
+
+analise_produto(produtos)
+
+# Outra forma de fazer:
+
+
+def ehalcoolico(bebida):
+    bebida = bebida.upper()
+    if 'BEB' in bebida:
+        return True
+    else:
+        return False
+
+
+for produto in produtos:
+    if ehalcoolico(produto):
+        print('Enviar {} para setor de bebidas alcóolicas'.format(produto))
 
 """ Mais de 1 argumento e formas de passar argumento para uma função
 
@@ -112,27 +112,27 @@ a função. Agora temos que verificar se o produto é da categoria passada ou n�
 """
 
 
-# def eh_da_categoria(bebida, categoria):
-#     bebida = bebida.upper()
-#     if categoria in bebida:
-#         return True
-#     else:
-#         return False
-#
-#
-# for produto in produtos:
-#     if eh_da_categoria(categoria='BEB', bebida=produto):  # Com o nome do argumento (keyword argument)
-#         print('Enviar {} para setor de bebidas alcóolicas'.format(produto))
-#     elif eh_da_categoria(produto, 'BSA'):  # Em ordem (positional argument)
-#         print('Enviar {} para setor de bebidas não alcóolicas'.format(produto))
+def eh_da_categoria(bebida, categoria):
+    bebida = bebida.upper()
+    if categoria in bebida:
+        return True
+    else:
+        return False
+
+
+for produto in produtos:
+    if eh_da_categoria(categoria='BEB', bebida=produto):  # Com o nome do argumento (keyword argument)
+        print('Enviar {} para setor de bebidas alcóolicas'.format(produto))
+    elif eh_da_categoria(produto, 'BSA'):  # Em ordem (positional argument)
+        print('Enviar {} para setor de bebidas não alcóolicas'.format(produto))
 
 """
 Outro exemplo, a função print tem um parâmetro que define qual caracter será utilizado entre a impressão das entradas,
 chamado 'sep', que deve ser declarado sempre ao final, pois é um parâmetro de palavra chave e não de posição, conforme
 ilustrado a seguir """
 
-# qtde_produtos = len(produtos)
-# print('Quantidade total de produtos:', qtde_produtos, 'texto2',  'texto3', sep='\n')
+qtde_produtos = len(produtos)
+print('Quantidade total de produtos:', qtde_produtos, 'texto2',  'texto3', sep='\n')
 
 print('\n===========================================================')
 print('VALORES PADRÃO PARA OS ARGUMENTOS DA FUNÇÃO')
@@ -164,85 +164,151 @@ cod_produtos = [' ABC12 ', 'abc34', 'AbC37']
 print(padronizar_codigos(cod_produtos))
 print(padronizar_codigos(cod_produtos, 'M'))
 
-# def greeting(name1):
-#     print(f'Hello {name1}!')
-#
-#
-# greeting('Brian')  # calling a function
-#
-# # Using a function with multiple parameters
-#
-#
-# def greeting(name2, age2):
-#     print(f'Hello {name2}, you are {age2} years old!')
-#
-#
-# greeting('Brian', '29')  # calling a function
-#
-# # Using a function with default parameter value
-#
-#
-# def greeting(name3, age3='28'):
-#     print(f'Hello {name3}, you are {age3} years old!')
-#
-#
-# greeting('Judith')  # calling a function
-#
-# # Using a function with variable obtained by an input from user
-#
-#
-# def greeting(name4, age4):
-#     print(f'Hello {name4}, you are {age4} years old!')
-#
-#
-# name = input('Enter your name: ')
-# age = input('Enter your age: ')
-# greeting(name, age)  # calling a function
-#
-# # ----------------------------
-# # EXERCISE
-# # ----------------------------
-# print('')
-# print('EXERCISE')
-# print('')
-# '''
-# def greeting(name, age=28):
-#     #Greets user with 'name' from 'input box' and 'age', if available, default age is used
-#     print('Hello '  +  name + ', you are ' + str(age) +'!')
-#     print(f'Hello {name}, you are {age} years old!')
-#
-# name = input('Enter your name: ')
-# age = input('Enter your age: ')
-# greeting(name, age)
-# # 1. Add new print statement - on a new line
-# #    which says 'We hear you like the color xxx! xxx is a string with color
-# # 2. extend the function with another  input parameter 'color', that defaults to 'red'
-# # 3. Capture the color via an input box as variable:color
-# # 4. Change the 'You are xx!' text to say 'you will be xx+1 years old next birthday
-# #  adding 1 to the age
-# # 5. Capitalize first letter of the 'name', and rest are small caps
-# # 6. Favorite color should be in lowercase
-# '''
-#
-#
-# def greeting(name5, age5=28, color1='red'):
-#     # Greets user with 'name' from 'input box', 'color' 'age'. If unavailable, default age and color are used
-#     print('')
-#     print(f'Hello {name5.capitalize()}, you will be {age5+1} years old next birthday!')
-#     print(f'We hear you like the color {color1.lower()}!')
-#
-#
-# name5 = input('Enter your name: ')
-# age5 = input('Enter your age: ')
-# color1 = input('Enter a color you like: ')
-# print('')
-# greeting(name5, int(age5), color1)
-#
-# # Named notation: it's best to name the arguments when calling the function to let the program more readable
-# # and also to be possible to change the order of the arguments
-# print('')
-# greeting(age5=29, color1='gray', name5='Victor Gomes')
-#
+print('\n===========================================================')
+print('MAIS SOBRE O RETURN')
+print('===========================================================')
+
+"""
+Podemos usar o return para basicamente qualquer tipo de objeto: numero, string, lista, tupla, dicionario, etc
+O return, se for executado, encerra a função, mesmo que dentro dela haja um loop
+"""
+
+
+# retornar um número
+def minha_soma(num1, num2, num3):
+    return num1 + num2 + num3
+
+
+# retornar um texto
+def padronizar_texto(texto):
+    texto = texto.casefold()
+    texto = texto.replace("  ", " ")
+    texto = texto.strip()
+    return texto
+
+
+# retornar um boolean
+def bateu_meta(vendas, meta):
+    if vendas >= meta:
+        return True
+    else:
+        return False
+
+
+# retornar uma lista, tupla ou dicionario
+def filtrar_lista_texto(lista, pedaco_texto):
+    lista_filtrada = []
+    for item in lista:
+        if pedaco_texto in item:
+            lista_filtrada.append(item)
+    return lista_filtrada
+
+
+# retornar mais de um objeto
+# funções retornam, por padrão, uma tupla automaticamente quando há mais de um valor no return
+def operacoes_basicas(num1, num2):
+    soma = num1 + num2
+    diferenca = num1 - num2
+    mult = num1 * num2
+    divisao = num1 / num2
+    return soma, diferenca, mult, divisao
+
+
+print(operacoes_basicas(10, 2))
+
+print('\n===========================================================')
+print('DOCSTRING E ANNOTATIONS')
+print('===========================================================')
+
+"""
+São ferramentas "apenas" para organização:
+Quando criamos uma função, normalmente não seremos as únicas pessoas a usarem essa função e também pode ser que a gente
+precise usar essa mesma função semanas, meses ou até anos depois da sua criação.
+
+Por isso é importante usarmos DocStrings e Annotations
+
+Docstring -> diz o que a função faz, quais valores ela tem como argumento e o que significa cada valor
+Annotation -> diz o que devem ser os argumentos e o que a função retorna
+
+Em muitas empresas, o time de tecnologia vai ter um padrão que você deve seguir para isso, mas caso não tenha, vamos te
+mostrar um padrão bom a ser utilizado.
+"""
+
+
+# DOCSTRING
+def minha_soma(num1, num2, num3):
+    """Faz a soma de 3 números inteiros e devolve como resposta um inteiro
+
+    Parameters:
+        num1 (int): primeiro número a ser somado
+        num2 (int): segundo número a ser somado
+        num3 (int): terceiro número a ser somado
+
+    Returns:
+        soma (int): o valor da soma dos 3 números dados como argumento
+    """
+    return num1 + num2 + num3
+
+
+# ANNOTATION
+def minha_soma(num1: 'primeiro número a ser somado', num2: int, num3: int) -> int:
+    return num1 + num2 + num3
+
+print('\n===========================================================')
+print('EXCEÇÕES E ERROS EM FUNÇÕES')
+print('===========================================================')
+
+""" Sempre que usamos o try para testar uma condição, o except é obrigatório
+ESTRUTURA:
+try:
+    o que eu quero tentar fazer
+except:
+    raise Exception (o que vou fazer caso dê erro)
+    
+ou então avisando qual o tipo de erro que ele teve:
+
+raise TypeError('O erro foi esse')
+raise ValueError('O erro foi esse')
+raise ZeroDivisionError('O erro foi esse')
+
+Ponto de atenção: o try tenta executar todas as linhas do bloco identado, então pode ser que o erro esteja em uma linha
+que não seja a que estamos querendo analisar, daí a mensagem do except vai estar incoerente com o erro
+
+TRATAMENTO COMPLETO
+try:
+    tente fazer isso
+except ErroEspecífico:
+    deu esse erro aqui que era esperado 
+else:
+    caso não dê o erro esperado, rode isso.
+finally:
+    independente do que acontecer, faça isso.
+"""
+
+
+def descobrir_servidor(email):
+    try:
+        posicao_a = email.index('@')
+    except:
+        # usamos o raise para interromper o programa
+        raise ValueError('Email digitado não tem @, digite novamente')
+    else:
+        servidor = email[posicao_a:]
+        if 'gmail' in servidor:
+            return 'gmail'
+        elif 'hotmail' in servidor or 'outlook' in servidor or 'live' in servidor:
+            return 'hotmail'
+        elif 'yahoo' in servidor:
+            return 'yahoo'
+        elif 'uol' in servidor or 'bol' in servidor:
+            return 'uol'
+        else:
+            return 'não determinado'
+
+
+email = input('Digite o seu e-mail: ')
+print(descobrir_servidor(email))
+
 # # ----------------------------
 # # RETURN STATEMENTS
 # # ----------------------------
