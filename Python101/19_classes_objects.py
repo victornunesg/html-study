@@ -1,9 +1,6 @@
-# ----------------------------
-# CLASSES AND OBJECTS
-# ----------------------------
-
-print("\nClasses & Objects")
-
+print('\n===========================================================')
+print('CLASSES E ORIENTAÇÃO A OBJETOS')
+print('===========================================================')
 
 # Classes are blueprints
 # Objects are the actual things you built
