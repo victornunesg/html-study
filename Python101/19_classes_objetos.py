@@ -2,6 +2,30 @@ print('\n===========================================================')
 print('CLASSES E ORIENTAÇÃO A OBJETOS')
 print('===========================================================')
 
+""" REGRAS GERAIS:
+Tudo no Python é um objeto: String é objeto / Lista é objeto / Dicionários são objetos ...
+Comparação Clássica: Pense no Controle Remoto de uma Televisão.
+    O Controle é um objeto
+    Cada botão dele é um comando, um método.
+    Cada método faz 1 ação específica
+    Por trás de cada método (dentro do controle) podem acontecer milhares de coisas quando você aperta 1 botão, mas no
+    fundo você tá cagando pra isso, só quer que o botão faça o que você mandou quando você clicar no botão.
+
+Em termos práticos no Python
+Isso significa que todos eles tem métodos específicos, ou seja, já existe programado no Python várias coisas que você
+consegue fazer com ele.
+
+Exemplo: Strings
+Quando no Python criaram a string, eles programaram lá em algum lugar que texto[i] vai te dar o caracter na posição i do
+texto. Também criaram o método texto.upper() que torna toda a string em letra maiúscula. Também criaram o método
+texto.casefold() que coloca tudo em letra minúscula. E assim vai para tudo que temos no Python
+Em termos práticos, você já deve ter reparado que fazemos muito coisas do tipo variavel.método()
+    
+    - 'Produto {}: {} unidades vendidas'.format(produto, quantidade)
+    - lista.append('ABC12304')
+    - texto.count()
+    - etc. """
+
 # Classes are blueprints
 # Objects are the actual things you built
 # variables => attributes

@@ -1,3 +1,5 @@
+import math
+
 """ Function para Cálculo de Carga Tributária (exemplo imaginário)
 
 Imagine que você trabalha no setor contábil de uma grande empresa de Varejo.
@@ -201,3 +203,38 @@ lista_estoque1 = [
 # print(f'Março: {len(estoque_fim_mar)}')
 # print(f'Abril: {len(estoque_fim_abr)}')
 # print(f'Lista de produtos: {len(lista_total)}')
+
+""" Loja de Tintas
+Faça um Programa para uma loja de tintas. O programa deverá pedir o tamanho em metros quadrados da área a ser pintada.
+Considere que a cobertura da tinta é de 1 litro para cada 6 metros quadrados e que a tinta é vendida em latas de 18
+litros, que custam R$ 80,00 ou em galões de 3,6 litros, que custam R$ 25,00.
+
+Informe ao usuário as quantidades de tinta a serem compradas e os respectivos preços em 3 situações.
+Dica: lembre dos operadores // e % mostrados em exercícios anteriores
+Dica1: numero // 10 vai te dar como resposta a parte inteira da divisão do número por 10.
+Dica2: numero % 10 vai te dar o resto da divisão do número por 10.
+
+1. Comprar apenas latas de 18 litros: (apenas latas inteiras)
+2. Comprar apenas galões de 3,6 litros: (apenas galoes inteiros)
+3. Misturar latas e galões, de forma que o desperdício de tinta seja menor. Sempre arredonde os valores para cima,
+isto é, considere latas cheias.
+"""
+
+
+# def calcula_lata(metros):
+#     qtde_latas = math.ceil(metros / 108)  # metodo que arredonda para cima o inteiro mais proximo da divisao)
+#     valor_total = qtde_latas * 80
+#     return qtde_latas, valor_total
+#
+#
+# def calcula_galao(metros):
+#     qtde_galoes = math.ceil(metros / 21.6)
+#     valor_total = qtde_galoes * 25
+#     return qtde_galoes, valor_total
+#
+#
+# area = float(input('Insira a quantidade em m2 a ser pintada: '))
+# latas, valor_latas = calcula_lata(area)
+# galoes, valor_galoes = calcula_galao(area)
+# print(f'1. Comprando apenas latas de 18l - Quantidade: {latas} latas - R$ {valor_latas:.2f}')
+# print(f'2. Comprando apenas galoes de 3,6l - Quantidade: {galoes} galoes - R$ {valor_galoes:.2f}')
