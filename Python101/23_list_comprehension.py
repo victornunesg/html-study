@@ -11,30 +11,30 @@ ESTRUTURA:
 lista = [expressão for item in iterable]
 """
 
-# preco_produtos = [100, 150, 300, 5500]
-# produtos = ['vinho', 'cafeiteira', 'microondas', 'iphone']
-#
-# #digamos que o imposto sobre os produtos é de 30%, ou seja, 0.3. Como eu faria para criar uma lista com os
-# #valores de imposto de cada produto?
-#
-# # usando o FOR
-# impostos = []
-# for item in preco_produtos:
-#     impostos.append(item * 0.3)
-# print(impostos)
-#
-# # usando LIST COMPREHENSION
-# impostos = [preco * 0.3 for preco in preco_produtos]
-# print(impostos)
-#
-#
-# # a "expressão" na list comprehension pode ser uma function tb
-# def calcular_imposto(preco, imposto):
-#     return preco * imposto
-#
-#
-# impostos = [calcular_imposto(preco, 0.3) for preco in preco_produtos]
-# print(impostos)
+preco_produtos = [100, 150, 300, 5500]
+produtos = ['vinho', 'cafeiteira', 'microondas', 'iphone']
+
+# digamos que o imposto sobre os produtos é de 30%, ou seja, 0.3. Como eu faria para criar uma lista com os
+# valores de imposto de cada produto?
+
+# usando o FOR
+impostos = []
+for item in preco_produtos:
+    impostos.append(item * 0.3)
+print(impostos)
+
+# usando LIST COMPREHENSION
+impostos = [preco * 0.3 for preco in preco_produtos]
+print(impostos)
+
+
+# a "expressão" na list comprehension pode ser uma function tb
+def calcular_imposto(preco, imposto):
+    return preco * imposto
+
+
+impostos = [calcular_imposto(preco, 0.3) for preco in preco_produtos]
+print(impostos)
 
 """ OBSERVAÇÃO:
 Normalmente isso é usado quando queremos fazer uma única ação com os itens de uma lista. Não é obrigatório, mas é comum
@@ -53,6 +53,56 @@ lista_aux = list(zip(vendas_itens, itens))  # transformando as duas listas em um
 lista_aux.sort(reverse=True)  # ordenando as tuplas do maior para o menor valor de vendas
 produtos = [produto for vendas, produto in lista_aux]  # list comprehension para atualizar a lista de produtos
 print(produtos)
+
+print('\n===========================================================')
+print('FILTRANDO COM IF')
+print('===========================================================')
+
+""" ESTRUTURA
+lista = [expressão for item in iterable if condicao]"""
+
+# Digamos que eu queira criar uma lista de produtos que bateram a meta.
+meta = 1000
+vendas_produtos = [1500, 150, 2100, 1950]
+produtos = ['vinho', 'cafeiteira', 'microondas', 'iphone']
+
+# fazendo com FOR tradicional
+produtos_meta = []
+for i, produto in enumerate(produtos):
+    if vendas_produtos[i] > meta:
+        produtos_meta.append(produto)
+print(produtos_meta)
+
+# fazendo com LIST COMPREHENSION filtrando com IF
+produtos_meta = [produto for i, produto in enumerate(produtos) if vendas_produtos[i] > meta]
+print(produtos_meta)
+
+
+print('\n===========================================================')
+print('FILTRANDO COM IF E ELSE - PARA ESCOLHER O RESULTADO FINAL')
+print('===========================================================')
+
+""" ESTRUTURA
+lista = [item if condicao else outro_resultado for item in iterable]
+
+Digamos que eu esteja analisando os vendedores de uma loja e queira criar uma lista para enviar para o RH com o bônus de
+cada vendedor. O bônus é dado por 10% do valor de vendas dele, caso ele tenha batido a meta
+"""
+vendedores_dic = {'Maria': 1200, 'José': 300, 'Antônio': 800, 'João': 1500, 'Francisco': 1900, 'Ana': 2750, 'Luiz': 400, 'Paulo': 20, 'Carlos': 23, 'Manoel': 70, 'Pedro': 90, 'Francisca': 80, 'Marcos': 1100, 'Raimundo': 999, 'Sebastião': 900, 'Antônia': 880, 'Marcelo': 870, 'Jorge': 50, 'Márcia': 1111, 'Geraldo': 120, 'Adriana': 300, 'Sandra': 450, 'Luis': 800}
+meta = 1000
+
+# fazendo com FOR tradicional
+lista_bonus = []
+for vendedor, vendas in vendedores_dic.items():
+    if vendas > meta:
+        lista_bonus.append(vendas * 0.1)
+    else:
+        lista_bonus.append(0)
+print(lista_bonus)
+
+# fazendo com LIST COMPREHENSION
+lista_bonus2 = [(vendas * 0.1) if vendas > meta else 0 for vendedor, vendas in vendedores_dic.items()]
+print(lista_bonus2)
 
 # numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 #
