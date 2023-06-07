@@ -1,33 +1,60 @@
-# ----------------------------
-# LAMBDA FUNCTIONS
-# ----------------------------
-print('\nLambda (anonymous) Functions')
+print('\n===========================================================')
+print('FUNÇÕES LAMBDA')
+print('===========================================================')
 
-# allows you to write single-line function definitions that you might use once and throw away
-# the return value is implicit in a lambda function (ALWAYS) so always returns a value (different from normal funcions)
+""" OBJETVO:
+
+As lambdas expressions são funções anônimas (sem nome mesmo) que tem 1 linha de código e são atribuidas a uma variável,
+como se a variável virasse uma função. Elas normalmente são usadas para fazer uma única ação, mas em Python usamos
+principalmente dentro de métodos como argumento, para não precisarmos criar uma função só para isso.
+Outra aplicação delas está em criar um "gerador de funções".
+
+Permite escrever funções de 1 linha as quais podemos usar uma vez e 'jogar fora'
+O valor de retorno é sempre implícito em uma lambda expression, sempre retorna algo (diferente das funções normais)
+
+Obs: Não é "obrigatório" usar lambda expression, até porque praticamente tudo o que você faz com elas você consegue
+fazer com functions normais. Mas, é importante saber entender quando encontrar e saber usar a medida que você for se
+acostumando e vendo necessidade.
 
 
-# normal function definition:
-def square(x):
-    return x*x
+ESTRUTURA: minha_funcao = lambda parametro: expressão """
+
+# EXEMPLO SIMPLES
+# definindo uma função que retorna um número * 2
+def minha_funcao(num):
+    return num * 2
 
 
-print(square(3))
+# definindo a mesma função como uma lambda expression:
+minha_funcao2 = lambda num: num * 2
 
-# Lambda function definition:
-# name = lambda parameter(s): expression
-square1 = lambda x: x*x
+print(minha_funcao2(5))
+print(minha_funcao(5))
 
-print(square1(3))
+# OUTRO EXEMPLO: Usar lambda expressions para criar uma função que calcula o preço dos produtos acrescido do imposto
+
+imposto = 0.3
+
+
+# definindo como função normal:
+def preco_imposto(preco):
+    return preco * (1 + imposto)
+
+
+# definindo como lambda expression:
+preco_imposto2 = lambda preco: preco * (1 + imposto)
+
+print(preco_imposto(100))
+print(preco_imposto2(100))
+
 
 # Putting lambda function inside a function:
-
-
 def func(n):
     return n
 
 
 print(type(func(3)))  # in this case will return int
+
 
 # if we put a lambda function as return of a function, the return type will be a function:
 
@@ -45,12 +72,14 @@ print(quintipler(3))  # getting 15 as return
 
 print(type(func(3)))
 
+
 # Another example of lambda combined with normal functions
 # A function to calculate a price based on a start-up cost and an hourly cost
 
 
-def price_calc(start,hourly_rate):
+def price_calc(start, hourly_rate):
     return lambda hours: start + hourly_rate * hours
+
 
 # price for a regular customer, 10 dollars start-up fee and 30 dollars as hourly cost
 
@@ -65,9 +94,9 @@ print(premium_cost(2))  # calculating 2 hours of treatment for a premium custome
 print(price_calc(1, 25)(2))  # same result as previous example
 
 # other examples calling a lambda immediately, using default values and specifying them
-print((lambda a, b, c: a+b+c)(2, 3, 4))  # calling immediately
-print((lambda a, b, c=2: a+b+c)(2, 3))  # using default values
-print((lambda a, b, c: a+b+c)(a=2, c=3, b=4))  # specifying arguments (does not matter the order in this case)
+print((lambda a, b, c: a + b + c)(2, 3, 4))  # calling immediately
+print((lambda a, b, c=2: a + b + c)(2, 3))  # using default values
+print((lambda a, b, c: a + b + c)(a=2, c=3, b=4))  # specifying arguments (does not matter the order in this case)
 print((lambda *args: sum(args))(2, 3, 4, 50))  # unpacking arguments
 
 # ----------------------------
@@ -77,14 +106,13 @@ print('\nExercise\n')
 # Writing equivalent lambda functions for the previous ones
 
 # def f(x): return x + 5
-f = lambda x: x+5
+f = lambda x: x + 5
 print(f(2))
 
 # def strip_spaces(str):
 #   return ''.join(str.split(' '))
 strip_spaces1 = lambda x: ''.join(x.split(' '))  # write equivalent lambda and insert Lambda here
 print(strip_spaces1('Monty Pythons Flying Circus'))
-
 
 # def join_list_no_duplicates(list_a,list_b):
 #    return list(set(list_a + list_b))
@@ -94,19 +122,19 @@ list_b = [3, 4, 5, 6, 7]
 join_list_no_duplicates1 = lambda x, y: list(set(x + y))
 print(join_list_no_duplicates1(list_a, list_b))
 
+
 # Complete the function so it returns a function
 
 
-def create_quad_func(a,b,c):
+def create_quad_func(a, b, c):
     '''return function f(x) = ax^2 + bx + c'''
-    return lambda x: (a*(x**2)) + (b*x) + c
+    return lambda x: (a * (x ** 2)) + (b * x) + c
 
 
 f = create_quad_func(2, 4, 6)
 g = create_quad_func(1, 2, 3)
 print(f(2))
 print(g(2))
-
 
 signups = ['MPF104', 'MPF20', 'MPF2', 'MPF17', 'MPF3', 'MPF45']
 # Lexicographic sort (without considering the integer as the main point to sort it)
@@ -131,4 +159,3 @@ player_list.sort(key=lambda playyer: playyer.score)  # order by score
 print([player.name for player in player_list])
 player_list.sort(key=lambda playyer: playyer.score, reverse=True)  # top score first
 print([player.name for player in player_list])
-

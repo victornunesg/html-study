@@ -381,3 +381,75 @@ def minha_funcao(arg1, arg2, arg3, arg4, *args, k = kwarg1, k2 = kwarg2, k3 = kw
 Caso coloquemos argumentos múltiplos antes dos individuais, o Python não vai saber quando começam os individuais, com
 isso o código dá erro.
 """
+
+print('\n===========================================================')
+print('FUNÇÕES EM ITERABLES')
+print('===========================================================')
+
+""" Alguns métodos e funções que já existem no Python podem rodar uma function para cada item, da mesma forma que
+fizemos com list comprehension. Isso pode ajudar a gente a resolver alguns desafios de forma mais simples.
+
+Uma função que permite que a gente faça isso é a MAP() function
+
+lista = list(map(função, iterable_original))
+
+EXEMPLO:
+Digamos que eu tenha uma function que corrige um código de um produto """
+
+
+# def padronizar_texto(texto):
+#     texto = texto.lower()
+#     texto = texto.replace("  ", " ")
+#     texto = texto.strip()
+#     return texto
+#
+#
+# # Agora queremos padronizar uma lista de códigos:
+# produtos = [' ABC12 ', 'abc34', 'AbC37', 'beb12', ' BSA151', 'BEB23']
+#
+# # Usando o for, temos que percorrer a lista toda e para cada item executar a function
+# for i, produto in enumerate(produtos):
+#     produtos[i] = padronizar_texto(produto)  # não pode ser apenas 'produto =' pois dessa forma não altera a lista
+# print(produtos)
+#
+# # Usando o map, apenas chamamos a função e ela já faz isso para a gente
+# produtos = list(map(padronizar_texto, produtos))  # é necessario usar o list() pois a função map retorna um objeto
+# print(produtos)
+
+print('\n===========================================================')
+print('SORT (OU SORTED) COM FUNCTION')
+print('===========================================================')
+
+""" DESCRIÇÃO:
+
+sort() modifica a lista original, colocando na ordem da tabela ASCII (maisculas primeiro, por exemplo)
+sorted() retorna um valor, tem que ser atribuído em uma nova variável (cria uma nova lista modificada, a original mantém)
+
+Até agora no programa, usamos várias vezes o .sort() para ordenar listas
+Mas o método sort tem um parâmetro que nunca usamos e que agora sabemos usar."""
+
+# produtos = ['apple tv', 'mac', 'IPhone x', 'IPhone 11', 'IPad', 'apple watch', 'mac book', 'airpods']
+# produtos.sort()
+# print(produtos)  # o sort ordena de acordo com a tabela ASCII, ou seja, maiusculos vem primeiro
+#
+# # como faríamos para ordenar corretamente?
+# # o sort possui um parâmetro key, que pode receber uma função. Podemos passar a função de string lower() assim:
+# produtos.sort(key=str.lower)
+# print(produtos)
+
+""" Outro exemplo: como ordenar um dicionário de acordo com o valor
+Queremos listar da maior quantidade de vendas para a menor, para enviar como report para o diretor, por exemplo"""
+
+# vendas_produtos = {'vinho': 100, 'cafeiteira': 150, 'microondas': 300, 'iphone': 5500}
+#
+#
+# # primeiro precisamos definir uma função para pegar o segundo item da tupla (valor) para servir de parâmetro de ordenação
+# def segundo_item(tupla):
+#     return tupla[1]
+#
+#
+# # então, transformamos o dict numa lista de tuplas
+# lista_vendas = list(vendas_produtos.items())
+# # passando a função no parâmetro key, ordenando em ordem decrescente
+# lista_vendas.sort(key=segundo_item, reverse=True)
+# print(dict(lista_vendas))
