@@ -422,8 +422,8 @@ print('===========================================================')
 
 """ DESCRIÇÃO:
 
-sort() modifica a lista original, colocando na ordem da tabela ASCII (maisculas primeiro, por exemplo)
-sorted() retorna um valor, tem que ser atribuído em uma nova variável (cria uma nova lista modificada, a original mantém)
+lista.sort() modifica a lista original, colocando na ordem da tabela ASCII (maisculas primeiro, por exemplo)
+sorted(lista) retorna um valor, tem que ser atribuído em uma nova variável (cria uma nova lista modificada, a original mantém)
 
 Até agora no programa, usamos várias vezes o .sort() para ordenar listas
 Mas o método sort tem um parâmetro que nunca usamos e que agora sabemos usar."""
