@@ -1,5 +1,6 @@
 import requests  # usada para buscar a requisição/informação de um site
 import json  # usada para tratar a requisição que virá no formato JSON
+import matplotlib.pyplot as plt  # usada para exibir o gráfico
 
 # pegando a cotação atual de todas as moedas
 cotacoes = requests.get('https://economia.awesomeapi.com.br/json/all')
@@ -19,6 +20,13 @@ dolar_dic = [float(item['bid']) for item in dolar_dic]
 print(dolar_dic)
 
 # Pegar as cotações do BitCoin de Jan/20 a Out/20
-btc_request = requests.get('https://economia.awesomeapi.com.br/json/daily/BTC-BRL/?start_date=20200101&end_date=20201230')
+btc_request = requests.get('https://economia.awesomeapi.com.br/json/daily/BTC-BRL/200?start_date=20200101&end_date=20201031')
 btc_dic = btc_request.json()
+btc_dic = [float(item['bid']) for item in btc_dic]
+btc_dic.reverse()  # invertendo a ordem dos valores (agora estarão ordenados do mais antigo para o mais recente)
 print(btc_dic)
+
+# Gráfico com as cotações do BitCoin
+plt.figure(figsize=(15, 5))
+plt.plot(btc_dic)
+plt.show()
