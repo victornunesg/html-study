@@ -28,18 +28,18 @@ from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 
 # If modifying these scopes, delete the file token.json.
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']  # remover o read only para liberar permissões
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '1JtB-n7EfXe2MIqQJfh3HOWEuazddilY7KA-EuBQpBQQ'  # pegar a id da sheet na url
-SAMPLE_RANGE_NAME = 'Página1!A1:B12'  # class data é o nome da página, definir o intervalo tb
+SAMPLE_SPREADSHEET_ID = '1JtB-n7EfXe2MIqQJfh3HOWEuazddilY7KA-EuBQpBQQ'  # pegar a id da sheet na url, depois do 'd/'
+SAMPLE_RANGE_NAME = 'Página1!A1:C14'  # class data é o nome da página, definir o intervalo de acordo com sua planilha
 
 
 def main():
-    """Shows basic usage of the Sheets API.
-    Prints values from a sample spreadsheet.
-    """
+
+    # bloco que realiza o login por meio de token de autenticação
     creds = None
+
     # The file token.json stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
     # time.
@@ -57,23 +57,48 @@ def main():
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
 
+    # executa comandos na planilha
     try:
-        service = build('sheets', 'v4', credentials=creds)
+        service = build('sheets', 'v4', credentials=creds)  # cria um serviço
 
-        # Call the Sheets API
+        # Chama a API do google sheets
         sheet = service.spreadsheets()
+        # sheet.values().get() pega informações da planilha
         result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                     range=SAMPLE_RANGE_NAME).execute()
-        values = result.get('values', [])
+        print(result)  # retorna um dicionario como informacoes gerais e os dados linha a linha em uma lista
 
-        if not values:
-            print('No data found.')
-            return
+        valores = result['values']
+        print(valores)
 
-        print('Name, Major:')
-        for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s, %s' % (row[0], row[4]))
+        # escrevendo novos valores a partir da linha A13
+        # necessario criar uma lista de listas contendo valores a adicionar
+        valores_adicionar = [
+            ['dezembro', 'R$ 5.200,00'],
+            ['janeiro', 'R$ 56.300,00'],
+        ]
+        # a chamada do update leva mais parametros, estao descritos na documentacao da API
+        result = sheet.values().update(spreadsheetId=SAMPLE_SPREADSHEET_ID,range="A13", valueInputOption="USER_ENTERED",
+                                       body={'values': valores_adicionar}).execute()
+
+        # adicionando uma nova coluna como um resultado de operacao das duas primeiras colunas
+        valores_adicionar = [
+            ['Imposto'],
+        ]
+
+        # percorrendo a lista de valores (linha 72) para calcular o imposto
+        # enumerate serve para pular a primeira linha e nao pegar o string 'Vendas'
+        for i, linha in enumerate(valores):
+            if i > 0:
+                vendas = linha[i].replace('R$', '').replace('.', '')  # tirando o ponto e o R$ do string
+                vendas = float(vendas.replace(',', '.'))
+                imposto = vendas * 0.1
+
+                # adicionando imposto como uma lista dentro da lista de valores a adicionar
+                valores_adicionar.append([imposto])
+        result = sheet.values().update(spreadsheetId=SAMPLE_SPREADSHEET_ID,range="C1", valueInputOption="USER_ENTERED",
+                                       body={'values': valores_adicionar}).execute()
+
     except HttpError as err:
         print(err)
 
