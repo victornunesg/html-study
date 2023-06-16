@@ -4,12 +4,28 @@ print('===========================================================')
 
 """ REGRAS GERAIS:
 Tudo no Python é um objeto: String é objeto / Lista é objeto / Dicionários são objetos ...
+Objetos, na verdade, são Classes em Python
+Cada Classe possui Métodos e Atributos
+
 Comparação Clássica: Pense no Controle Remoto de uma Televisão.
     O Controle é um objeto
     Cada botão dele é um comando, um método.
     Cada método faz 1 ação específica
     Por trás de cada método (dentro do controle) podem acontecer milhares de coisas quando você aperta 1 botão, mas no
     fundo você tá cagando pra isso, só quer que o botão faça o que você mandou quando você clicar no botão.
+
+Classe = Objeto
+    Métodos = o que aquele objeto consegue fazer?
+    Atributos = quais são as informações/propriedades desse objeto?
+
+Classe = Pessoa
+    Métodos = Andar, Pular, Correr, etc
+    Atributos = Peso, Altura, QI, Profissão
+
+Classe = String
+    Métodos = Replace, Find, Capitalize, Format
+
+Cada objeto é um tipo. Dizemos "É um objeto do tipo String, tipo Int, etc"
 
 Em termos práticos no Python
 Isso significa que todos eles tem métodos específicos, ou seja, já existe programado no Python várias coisas que você
