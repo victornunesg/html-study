@@ -40,114 +40,223 @@ Em termos práticos, você já deve ter reparado que fazemos muito coisas do tip
     - 'Produto {}: {} unidades vendidas'.format(produto, quantidade)
     - lista.append('ABC12304')
     - texto.count()
-    - etc. """
+    - etc.
+    
+==================================
+Vantagens da orientação a objetos:
 
-# Classes are blueprints
-# Objects are the actual things you built
-# variables => attributes
-# functions => methods
+- Aproveitar o código sem precisar refazer/copiar tudo
+- Encapsulamento - proteção a mudanças indesejadas (o método está protegido dentro da definição da classe por exemplo)
+- Herança - Instâncias de objetos tem as mesmas características, apesar de possuirem valores diferentes
+- Polimorfismo - Um mesmo método pode ter várias formas em diferentes classes (ou subclasses)ex: Animais>GatosxCachorros
 
-# we use capitalization when creating classes
-class Movie:
-    # initialization function
-    # self works referring always to the object that is active at the moment
-    def __init__(self, title, year, imdb_score, have_seen):
-        # self refers to the object that we are creating (convention)
-        self.title = title
-        self.year = year
-        self.imdb_score = imdb_score
-        self.have_seen = have_seen
+Classes são projetos
+Objetos são as coisas reais que você construiu
+variáveis => atributos
+funções => métodos 
 
-    # creating a method (function) inside the class to give more details about its objects
-    def nice_print(self):
-        print("\nTitle: ", self.title)
-        print("Year of production: ", self.year)
-        print("IMDB Score: ", self.imdb_score)
-        print("I have seen it: ", self.have_seen)
+construindo a primeira classe em Python: class Nome_Classe(object)
+método Init é automaticamente chamado quando se inicia a classe
+é esse método que define o que acontece quando você cria uma instância da classe. """
 
 
-# creating two new object from class Movie
-film_1 = Movie("Life of Brian", 1979, 8.1, True)
-film_2 = Movie("The Holy Grail", 1975, 8.2, True)
+# criando a classe de uma televisão, definindo as caracteristicas/atributos no método init
+class TV:
 
-# printing some attributes of film_1
-print('\n', film_1.title, film_1.imdb_score)
+    def __init__(self):
+        self.cor = 'preta'
+        self.ligada = False
+        self.tamanho = 55
+        self.canal = 'netflix'
+        self.volume = 10
 
-# calling the method 'nice_print()' for film 2 in equivalent manners
-film_2.nice_print()
-Movie.nice_print(film_2)
-
-# creating a list (database) with the 2 films information
-films = [film_1, film_2]
-
-# we can access the object attributes inside the list
-print(films[1].title, films[0].title)
-
-# we also can access and call the object methods inside the list
-films[0].nice_print()
-
-# ----------------------------
-# CLASS INHERITANCE
-# ----------------------------
-
-# Happens when you have a class and another class which will inheritance attributes and methods from the first one
-print('\nclass Inheritance')
+    # criando método para mudar um canal, recebe um novo parâmetro para alterar o atributo
+    def mudar_canal(self, novo_canal):
+        self.canal = novo_canal
 
 
-class Person:
-    def move(self):
-        print('Moves 4 paces')
+# criando objetos/instâncias da classe TV
+tv_sala = TV()
+tv_quarto = TV()
 
-    def rest(self):
-        print('Gains 4 health points')
+# alterando atributos dos objetos
+tv_sala.cor = 'branca'
+tv_quarto.mudar_canal('disney+')
 
+# imprimindo os atributos após alterações
+print(tv_sala.cor)
+print(tv_quarto.cor)
+print(tv_sala.canal)
+print(tv_quarto.canal)
 
-# creating a new class named 'character1' which inherit class Person()
-print('\nPerson')
-character1 = Person()
-character1.move()
+""" MAIS SOBRE O SELF
 
+Sempre quando necessário acessar um atributo/método definido dentro da classe, é necessário ter 'self' como primeiro
+parâmetro na definição de um método, bem como na definição dos atributos, caso contrário não será possível acessar fora
+da classe.
 
-# Doctor does all the things a Person does and also heals
-class Doctor(Person):  # inherits from Person
-    # pass  # if we put pass only, it will be identical to Person Class
-    def heal(self):
-        print('Heals 10 health points')
-
-
-# now creating a doctor
-print('\nDoctor')
-character2 = Doctor()
-character2.move()  # moves like Person
-character2.heal()  # heals like Doctor
+'self.atributo' é como se fosse um nome só, se refere ao atributo da classe
+"""
 
 
-# Fighter overwrite move method
-class Fighter(Person):
-    def fight(self):
-        print('Do 10 health points of damage')
-
-    def move(self):
-        print('Moves 6 paces')
-
-
-print('\nFighter')
-character3 = Fighter()
-character3.fight()
-character3.move()  # now he moves faster than a Person
+# também é possível definir parâmetros para o 'init' da classe, utilizado para que os atributos possam ser definidos no
+# momento da criação do objeto, quando se chama a classe:
+class TV2:
+    def __init__(self, tamanho, volume):
+        self.tamanho = tamanho
+        self.volume = volume
 
 
-# Wizard inherits 2 classes
-class Wizard(Doctor, Fighter):
-    def cast_spell(self):
-        print('Turns invisible')
+# podemos passar os parâmetros através do nome
+tv_salao = TV2(tamanho=32, volume=10)
+# ou podemos passar na ordem
+tv_banheiro = TV2(29, 12)
 
-    def heal(self):
-        print('Heals 15 points')
+print(tv_salao.tamanho)
+print(tv_banheiro.volume)
+
+""" ATRIBUTOS DE CLASSE
+todos os atributos definidos anteriormente (iniciados com 'self.atributo'), são atributos de instância
+isto é, cada objeto pode ter valores de atributos distintos, pois podem ser alterados a qualquer momento
+
+já os atributos de classe são únicos, terão os mesmos valores para qualquer objeto
+podem ser alterados, porém isso refletirá em todos os objetos criados
+normalmente alterar esse atributo de classe não é usual e nem recomendado quando se tem uma classe bem estruturada
+"""
 
 
-print('\nWizard')
-character4 = Wizard()
-character4.fight()
-character4.move()
-character4.heal()
+class TV3:
+
+    # todos os objetos terão o atributo 'cor' e será 'preta' para todas as instâncias dessa classe
+    cor = 'preta'
+
+    def __init__(self):
+        self.ligada = False
+        self.tamanho = 55
+        self.canal = 'netflix'
+        self.volume = 10
+
+
+tv_nova = TV3()
+tv_nova2 = TV3()
+print(tv_nova.cor)
+print(tv_nova2.cor)
+
+# alterando o atributo da classe TV3 e verificando as alterações logo a seguir
+TV3.cor = 'branca'
+print(tv_nova.cor)
+print(tv_nova2.cor)
+
+
+
+
+
+
+
+
+
+
+# # we use capitalization when creating classes
+# class Movie:
+#     # initialization function
+#     # self works referring always to the object that is active at the moment
+#     def __init__(self, title, year, imdb_score, have_seen):
+#         # self refers to the object that we are creating (convention)
+#         self.title = title
+#         self.year = year
+#         self.imdb_score = imdb_score
+#         self.have_seen = have_seen
+#
+#     # creating a method (function) inside the class to give more details about its objects
+#     def nice_print(self):
+#         print("\nTitle: ", self.title)
+#         print("Year of production: ", self.year)
+#         print("IMDB Score: ", self.imdb_score)
+#         print("I have seen it: ", self.have_seen)
+#
+#
+# # creating two new object from class Movie
+# film_1 = Movie("Life of Brian", 1979, 8.1, True)
+# film_2 = Movie("The Holy Grail", 1975, 8.2, True)
+#
+# # printing some attributes of film_1
+# print('\n', film_1.title, film_1.imdb_score)
+#
+# # calling the method 'nice_print()' for film 2 in equivalent manners
+# film_2.nice_print()
+# Movie.nice_print(film_2)
+#
+# # creating a list (database) with the 2 films information
+# films = [film_1, film_2]
+#
+# # we can access the object attributes inside the list
+# print(films[1].title, films[0].title)
+#
+# # we also can access and call the object methods inside the list
+# films[0].nice_print()
+#
+# # ----------------------------
+# # CLASS INHERITANCE
+# # ----------------------------
+#
+# # Happens when you have a class and another class which will inheritance attributes and methods from the first one
+# print('\nclass Inheritance')
+#
+#
+# class Person:
+#     def move(self):
+#         print('Moves 4 paces')
+#
+#     def rest(self):
+#         print('Gains 4 health points')
+#
+#
+# # creating a new class named 'character1' which inherit class Person()
+# print('\nPerson')
+# character1 = Person()
+# character1.move()
+#
+#
+# # Doctor does all the things a Person does and also heals
+# class Doctor(Person):  # inherits from Person
+#     # pass  # if we put pass only, it will be identical to Person Class
+#     def heal(self):
+#         print('Heals 10 health points')
+#
+#
+# # now creating a doctor
+# print('\nDoctor')
+# character2 = Doctor()
+# character2.move()  # moves like Person
+# character2.heal()  # heals like Doctor
+#
+#
+# # Fighter overwrite move method
+# class Fighter(Person):
+#     def fight(self):
+#         print('Do 10 health points of damage')
+#
+#     def move(self):
+#         print('Moves 6 paces')
+#
+#
+# print('\nFighter')
+# character3 = Fighter()
+# character3.fight()
+# character3.move()  # now he moves faster than a Person
+#
+#
+# # Wizard inherits 2 classes
+# class Wizard(Doctor, Fighter):
+#     def cast_spell(self):
+#         print('Turns invisible')
+#
+#     def heal(self):
+#         print('Heals 15 points')
+#
+#
+# print('\nWizard')
+# character4 = Wizard()
+# character4.fight()
+# character4.move()
+# character4.heal()
