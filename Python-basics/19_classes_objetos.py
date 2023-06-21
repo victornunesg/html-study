@@ -148,7 +148,25 @@ print(tv_nova.cor)
 print(tv_nova2.cor)
 
 
+""" MÉTODOS AUXILIARES
+São métodos criados nas classes somente para serem utilizados por outro(s) método(s) dentro da mesma classe, ou seja,
+não será chamado diretamente no programa. Há uma convenção que informa aos programadores que irão utilizar a classe de 
+colocar um único underline na frente do nome do método, caracterizando-o como privado, interno da classe. Trata-se de
+uma sinalização para não utilizar indevidamente
 
+DICAS GERAIS/ORIENTAÇÕES/PADRONIZAÇÕES
+1) sempre definir o nome da classe com letra maiúscula (cada palavra da classe tb, maiúscula)
+2) sempre 1 linha de espaço entre os métodos e 2 linhas de espaço no final
+3) métodos devem ser curtos, para executar funções bem definidas e específicas
+4) caso seja necessário criar uma outra lógica para aquele método criado, deve-se criar um método auxiliar para fazê-lo
+5) todos os atributos de instância, ou seja, que mudam de acordo com cada objeto, devem estar no método __init__
+
+MODIFICANDO O INIT DE UMA CLASSE JÁ EXISTENTE
+Quando for realizar edições em uma classe, é necessário verificar impactos nos objetos/instâncias já existentes, pois
+existem edições que vão exigir reestruturação do programa, como por exemplo, se alterar o init de uma classe existente
+adicionando atributos novos (haverá quebras em objetos já existentes os quais não foram definidos com os atributos que
+foram alterados/incluidos), mas também há edições que não causam impacto (adição de um novo método, por exemplo).
+"""
 
 
 
