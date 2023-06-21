@@ -166,6 +166,13 @@ Quando for realizar edições em uma classe, é necessário verificar impactos n
 existem edições que vão exigir reestruturação do programa, como por exemplo, se alterar o init de uma classe existente
 adicionando atributos novos (haverá quebras em objetos já existentes os quais não foram definidos com os atributos que
 foram alterados/incluidos), mas também há edições que não causam impacto (adição de um novo método, por exemplo).
+
+MÉTODO ESTÁTICO
+Métodos que não utilizam informações/atributos da própria classe, 100% auxiliar também.
+São definidos antes do __init__ e sem o self (pois não usa nada da classe), como se fosse uma variável global
+Além disso, temos que colocar o decorator @staticmethod antes da definição do método (ver exemplo nos exercicios), para
+sinalizar que se trata de um método estático.
+Para usar o método estático, deve-se usar 'nome_da_classe.método_estatico()'
 """
 
 
