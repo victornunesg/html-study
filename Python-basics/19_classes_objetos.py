@@ -173,6 +173,38 @@ São definidos antes do __init__ e sem o self (pois não usa nada da classe), co
 Além disso, temos que colocar o decorator @staticmethod antes da definição do método (ver exemplo nos exercicios), para
 sinalizar que se trata de um método estático.
 Para usar o método estático, deve-se usar 'nome_da_classe.método_estatico()'
+
+
+ATRIBUTOS NÃO PÚBLICOS
+Atenção: Só é recomendado em casos de atributos sensíveis para a classe, ou seja, que necessariamente não podem ser
+modificados fora de métodos. Desta forma, temos que 'fechar' o atributo e definir um método para manipulá-lo.
+
+Quando se deseja tornar um atributo modificável apenas através da utilização de métodos da classe, basta colocar um _ na
+frente, logo após o 'self.' que o atributo torna-se não público, porém visivel para as instâncias.
+Se colocarmos dois underlines 'self.__Atributo', as instâncias da classe não irão conseguir acessá-lo, você pode restrin
+gir o uso apenas para alterações dentro dos métodos da classe, mas ficará inacessível para as instâncias dela.
+
+RELACIONAMENTO ENTRE CLASSES
+Não se trata de subclasses, e sim duas classes que possuem relação. Exemplo: Conta corrente <> Cartão de crédito
+Exemplificado no arquivo de exercícios como funciona o relacionamento entre duas classes.
+
+MÉTODOS GETTER E SETTER (raro de encontrar na prática)
+Caso existam atributos não públicos os quais queira restringir a maneira de alterar seu respectivo valor sem a necessida
+de de usar métodos dentro da classe para tal, deve-se definir os métodos 'getter' e 'setter' para realizar validações durante a
+atribuição. Com isso, ao executar um comando de atribuição:
+
+cartão_Victor._senha = '1324'
+
+as validações podem ocorrer caso se defina:
+
+@property  # esse é o getter
+def nome_do_atributo(self):
+    return self.nome_do_atributo
+
+@nome_do_atributo.setter
+def nome_do_atributo(self):
+    # validação
+
 """
 
 
