@@ -1,78 +1,136 @@
-# --------------------------------
-# STRINGS-BASICS/SLICING
-# --------------------------------
-
-print('--------------------------------')
-print('Strings-Basics / Slicing')
-print('--------------------------------')
+print('\n===========================================================')
+print('INTRODUÇÃO')
+print('===========================================================')
 
 msg = 'Strings examples in Python, it\'s interesting'
-print(msg + msg)  # The messages will be printed without spaces in between
-print(msg, msg)  # A space is given in between
-print(msg*2)  # Same result as +
-print(msg.upper())  # Uppercase all the string
-print(msg.lower())  # Lowercase all the string
-print(msg.capitalize())  # Only capitalize the first letter of the string
-print(msg.title())  # Capitalize the first letter of each word in the string
-print(len(msg))  # Prints the msg length
-print(msg.count('python'))  # Case sensitive
+print(msg + msg)  # a mensagem será replicada sem espaçamento entre uma e outra
+print(msg, msg)  # agora temos um espaço entre elas
+print(msg*2)  # mesmo resultado acima
+print(msg.upper())  # colocando tudo em maiúsculo
+print(msg.lower())  # colocando tudo em minúsculo
+print(msg.capitalize())  # coloca em maiúsculo somente a primeira letra da string
+print(msg.title())  # coloca em maiúsculo a primeira letra de cada palavra da string
+print(len(msg))  # imprime o tamanho da string
+print(msg.count('python'))  # é case sensitive, retorna zero
 
-print('')
-
-# Slicing
-print(msg[5])  # Getting the character in the 5th position of the string
-print(msg[-1])  # Getting the last character in the string
-print(msg[2:7])  # Getting characters from 2 to 7th positions
-print(msg[:10])  # # Getting characters from 0 to 10th positions
-
-print('')
+print('\n===========================================================')
+print('SLICING')
+print('===========================================================')
+print('Exemplos de slicing')
+print(msg[5])  # imprime o caracter da 5ª posição da string
+print(msg[-1])  # imprime o caracter da última posição da string
+print(msg[2:7])  # imprime os caracteres entre as posições 2 (incluso) e 7 (excludente, vai até a 6)
+print(msg[:10])  # # imprime os caracteres entre as posições 0 (incluso) e 10 (excludente, vai até a 9)
 
 msg = 'welcome to Python 101: Strings'
 msg1 = msg[18]+' '+msg[:8]+msg[25:29]+msg[7:11]+msg[13]+msg[12]+msg[2]+msg[1]+msg[-5]
 print(msg1.title())
-print(msg1[::-1].title())  # printing msg in backwards
-print('')
+print(msg1[::-1].title())  # imprime a string ao contrário
 
-# --------------------------------
-# STRINGS-FIND/REPLACE, STRING FORMATTING
-# --------------------------------
+print('\n===========================================================')
+print('FIND/REPLACE, FORMATAÇÃO')
+print('===========================================================')
 
-print('--------------------------------')
-print('Strings-Find/replace, string formatting')
-print('--------------------------------')
-print('')
-
-# Multi lines strings, using triple quotes
+print('Exemplos de substituição e formatação\n')
 msg = """Dear Terry,
 You must cut down the mightiest 
 tree in the forest with…
 a herring! <3"""
 
 print(msg)
-print(msg.find('D'))  # returns the position of `D` character starts
-print(msg.find('Terry'))  # returns the position of `Terry` word starts
-print(msg.replace('Terry', 'Victor'))  # changes words or characters, but it does not save the string after
+print(msg.find('D'))  # retorna a posição onde o caracter 'D' está
+print(msg.find('Terry'))  # retorna a posição onde a palavra 'Terry' começa
+print(msg.replace('Terry', 'Victor'))  # substitui palavras/letras, porém não salva na string depois de executado
 print(msg)
-msg = msg.replace('Terry', 'Victor')  # it is also possible to save the new message in the same variable msg as before
+msg = msg.replace('Terry', 'Victor')  # agora substitui e salva na string a atualização
 print(msg)
 
-print('')
+print('\n===========================================================')
+print('MEMBERSHIP')
+print('===========================================================')
 
-# Membership
-print('Victor' in msg)  # Checking if 'Victor' exists in msg1, returns boolean
-print('Victor' not in msg)  # Checking if 'Victor' does not exist in msg1, returns boolean
+print('Victor' in msg)  # retorna True/False se 'Victor' existe na msg1
+print('Victor' not in msg)
 
-# String formatting
-print('')
+print('\n===========================================================')
+print('FSTRING')
+print('===========================================================')
+
 name = 'TERRY'
 color = 'RED'
 msg = '[' + name.capitalize() + '] loves the color ' + color.lower() + '!'
 msg1 = f'[{name.capitalize()}] loves the color {color.lower()}!'
-# msg1 gives the same result as msg, using formatting settings giving more clarity in the code
+# msg1 traz o mesmo resultado que a msg, porém traz mais clareza ao usar FSTRING
 print(msg)
 print(msg1)
-print('')
+
+print('\n===========================================================')
+print('FORMATAÇÃO')
+print('===========================================================')
+
+""" Como usar o format para criar formatações personalizadas em prints e textos.
+
+:<		Alinha o texto à esquerda (se tiver espaço na tela para isso)
+:>		Alinha o texto à direita (se tiver espaço na tela para isso)
+:^		Alinha o texto ao centro (se tiver espaço na tela para isso)
+:+		Coloca o sinal sempre na frente do número (independente se é positivo ou negativo)
+:,		Coloca a vírgula como separador de milhar
+:_		Coloca o _ como separador de milhar
+:e		Formato Científico
+:f		Número com quantidade fixa de casas decimais
+:x		Formato HEX minúscula (para cores)
+:X		Formato HEX maiúscula (para cores)
+:%		Formato Percentual
 """
+print('\nExemplo de Alinhamento')
+email = 'lira@gmail.com'
+print('Meu e-mail não é {:<30}, show?'.format(email))
+
+print('\nExemplo de Edição de Sinal')
+custo = 500
+faturamento = 270
+lucro = faturamento - custo
+print('Faturamento foi {:+} e lucro foi {:+}'.format(faturamento, lucro))
+
+print('\nExemplo de Separador de Milhar')
+custo = 500
+faturamento = 270
+lucro = faturamento - custo
+print('Faturamento foi {:+} e lucro foi {:+}'.format(faturamento, lucro))
+
+print('\nFormato com casas Decimais fixas')
+custo = 5006
+faturamento = 270
+lucro = faturamento - custo
+print('Faturamento foi {:.2f} e lucro foi {:2f}'.format(faturamento, lucro))
+
+print('\nFormato Percentual')
+custo = 500
+faturamento = 1300
+lucro = faturamento - custo
+margem = lucro / faturamento
+print('Margem de lucro foi de {:.2%}'.format(margem))
+
+
+print('\nFormato Moeda -> Combinação de Formatos')
+""" Existem módulos/bibliotecas que vão facilitar isso, caso a gente queira.
+Também pode ser feito por substituições em string """
+custo = 5000
+faturamento = 27000
+lucro = faturamento - custo
+print('Faturamento foi R${:,.2f} e lucro foi R${:,.2f}'.format(faturamento, lucro))
+
+# transformando no formato brasileiro
+lucro_texto = 'R${:_.2f}'.format(lucro)
+print(lucro_texto.replace('.', ',').replace('_', '.'))
+
+print('\nFunção round() para arredondar números, caso seja necessário')
+imposto = 0.15758
+preco = 100
+valor_imposto = round(preco * imposto, 1)
+print('Imposto sobre o preço é de {}'.format(valor_imposto))
+
+""" MÉTODOS ÚTEIS PARA STRINGS
 
 - capitalize() -> Coloca a 1ª letra Maiúscula
 
@@ -215,86 +273,4 @@ Uso:
         print(texto.upper())
     Resultado:
         'BEB12343'
-        
 """
-
-# -*- coding: utf-8 -*-
-"""06.07 Strings 07.ipynb
-
-Automatically generated by Colaboratory.
-
-Original file is located at
-    https://colab.research.google.com/drive/1MnAABdPDOlnIRE8a5vAaEnijCm2YWbd0
-
-# Format - Aula de Consulta
-
-### Como usar o format para criar formatações personalizadas em prints e textos.
-
-:<		Alinha o texto à esquerda (se tiver espaço na tela para isso)
-:>		Alinha o texto à direita (se tiver espaço na tela para isso)
-:^		Alinha o texto ao centro (se tiver espaço na tela para isso)
-:+		Coloca o sinal sempre na frente do número (independente se é positivo ou negativo)
-:,		Coloca a vírgula como separador de milhar
-:_		Coloca o _ como separador de milhar
-:e		Formato Científico
-:f		Número com quantidade fixa de casas decimais
-:x		Formato HEX minúscula (para cores)
-:X		Formato HEX maiúscula (para cores)
-:%		Formato Percentual
-
-- Exemplo de Alinhamento
-"""
-
-email = 'lira@gmail.com'
-print('Meu e-mail não é {:<30}, show?'.format(email))
-
-"""- Exemplo de Edição de Sinal"""
-
-custo = 500
-faturamento = 270
-lucro = faturamento - custo
-print('Faturamento foi {:+} e lucro foi {:+}'.format(faturamento, lucro))
-
-"""- Exemplo de Separador de Milhar"""
-
-custo = 500
-faturamento = 270
-lucro = faturamento - custo
-print('Faturamento foi {:+} e lucro foi {:+}'.format(faturamento, lucro))
-
-"""- Formato com casas Decimais fixas"""
-
-custo = 5006
-faturamento = 270
-lucro = faturamento - custo
-print('Faturamento foi {:.2f} e lucro foi {:2f}'.format(faturamento, lucro))
-
-"""- Formato Percentual"""
-
-custo = 500
-faturamento = 1300
-lucro = faturamento - custo
-margem = lucro / faturamento
-print('Margem de lucro foi de {:.2%}'.format(margem))
-
-"""- Formato Moeda -> Combinação de Formatos
-
-Existem módulos/bibliotecas que vão facilitar isso, caso a gente queira, mas vamos ver como usar módulos mais a frente 
-do curso. Por enquanto, se você precisar, pode fazer substituições em string
-"""
-
-custo = 5000
-faturamento = 27000
-lucro = faturamento - custo
-print('Faturamento foi R${:,.2f} e lucro foi R${:,.2f}'.format(faturamento, lucro))
-
-# transformando no formato brasileiro
-lucro_texto = 'R${:_.2f}'.format(lucro)
-print(lucro_texto.replace('.', ',').replace('_', '.'))
-
-"""- Função round() para arredondar números, caso seja necessário"""
-
-imposto = 0.15758
-preco = 100
-valor_imposto = round(preco * imposto, 1)
-print('Imposto sobre o preço é de {}'.format(valor_imposto))

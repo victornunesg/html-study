@@ -53,11 +53,15 @@ Vantagens da orientação a objetos:
 Classes são projetos
 Objetos são as coisas reais que você construiu
 variáveis => atributos
-funções => métodos 
+funções => métodos """
 
-construindo a primeira classe em Python: class Nome_Classe(object)
+print('\n===========================================================')
+print('CRIANDO A CLASSE "TV"')
+print('===========================================================')
+
+""" ESTRUTURA: class Nome_Classe(object)
 método Init é automaticamente chamado quando se inicia a classe
-é esse método que define o que acontece quando você cria uma instância da classe. """
+é esse método que define o que acontece quando você cria uma instância da classe."""
 
 
 # criando a classe de uma televisão, definindo as caracteristicas/atributos no método init
@@ -73,6 +77,8 @@ class TV:
     # criando método para mudar um canal, recebe um novo parâmetro para alterar o atributo
     def mudar_canal(self, novo_canal):
         self.canal = novo_canal
+
+# BLOCO DO PROGRAMA
 
 
 # criando objetos/instâncias da classe TV
@@ -115,14 +121,15 @@ tv_banheiro = TV2(29, 12)
 print(tv_salao.tamanho)
 print(tv_banheiro.volume)
 
-""" ATRIBUTOS DE CLASSE
-todos os atributos definidos anteriormente (iniciados com 'self.atributo'), são atributos de instância
-isto é, cada objeto pode ter valores de atributos distintos, pois podem ser alterados a qualquer momento
+print('\n===========================================================')
+print('ATRIBUTOS DE CLASSE')
+print('===========================================================')
 
-já os atributos de classe são únicos, terão os mesmos valores para qualquer objeto
+""" Todos os atributos definidos anteriormente (iniciados com 'self.atributo'), são atributos de instância
+isto é, cada objeto pode ter valores de atributos distintos, pois podem ser alterados a qualquer momento.
+Já os atributos de classe são únicos, terão os mesmos valores para qualquer objeto
 podem ser alterados, porém isso refletirá em todos os objetos criados
-normalmente alterar esse atributo de classe não é usual e nem recomendado quando se tem uma classe bem estruturada
-"""
+normalmente alterar esse atributo de classe não é usual e nem recomendado quando se tem uma classe bem estruturada """
 
 
 class TV3:
@@ -148,34 +155,44 @@ print(tv_nova.cor)
 print(tv_nova2.cor)
 
 
-""" MÉTODOS AUXILIARES
+""" 
+============================
+MÉTODOS AUXILIARES
+============================
 São métodos criados nas classes somente para serem utilizados por outro(s) método(s) dentro da mesma classe, ou seja,
 não será chamado diretamente no programa. Há uma convenção que informa aos programadores que irão utilizar a classe de 
 colocar um único underline na frente do nome do método, caracterizando-o como privado, interno da classe. Trata-se de
 uma sinalização para não utilizar indevidamente
 
+============================
 DICAS GERAIS/ORIENTAÇÕES/PADRONIZAÇÕES
+============================
 1) sempre definir o nome da classe com letra maiúscula (cada palavra da classe tb, maiúscula)
 2) sempre 1 linha de espaço entre os métodos e 2 linhas de espaço no final
 3) métodos devem ser curtos, para executar funções bem definidas e específicas
 4) caso seja necessário criar uma outra lógica para aquele método criado, deve-se criar um método auxiliar para fazê-lo
 5) todos os atributos de instância, ou seja, que mudam de acordo com cada objeto, devem estar no método __init__
 
+============================
 MODIFICANDO O INIT DE UMA CLASSE JÁ EXISTENTE
+============================
 Quando for realizar edições em uma classe, é necessário verificar impactos nos objetos/instâncias já existentes, pois
 existem edições que vão exigir reestruturação do programa, como por exemplo, se alterar o init de uma classe existente
 adicionando atributos novos (haverá quebras em objetos já existentes os quais não foram definidos com os atributos que
 foram alterados/incluidos), mas também há edições que não causam impacto (adição de um novo método, por exemplo).
 
+============================
 MÉTODO ESTÁTICO
+============================
 Métodos que não utilizam informações/atributos da própria classe, 100% auxiliar também.
 São definidos antes do __init__ e sem o self (pois não usa nada da classe), como se fosse uma variável global
 Além disso, temos que colocar o decorator @staticmethod antes da definição do método (ver exemplo nos exercicios), para
 sinalizar que se trata de um método estático.
 Para usar o método estático, deve-se usar 'nome_da_classe.método_estatico()'
 
-
+============================
 ATRIBUTOS NÃO PÚBLICOS
+============================
 Atenção: Só é recomendado em casos de atributos sensíveis para a classe, ou seja, que necessariamente não podem ser
 modificados fora de métodos. Desta forma, temos que 'fechar' o atributo e definir um método para manipulá-lo.
 
@@ -184,11 +201,15 @@ frente, logo após o 'self.' que o atributo torna-se não público, porém visiv
 Se colocarmos dois underlines 'self.__Atributo', as instâncias da classe não irão conseguir acessá-lo, você pode restrin
 gir o uso apenas para alterações dentro dos métodos da classe, mas ficará inacessível para as instâncias dela.
 
+============================
 RELACIONAMENTO ENTRE CLASSES
+============================
 Não se trata de subclasses, e sim duas classes que possuem relação. Exemplo: Conta corrente <> Cartão de crédito
 Exemplificado no arquivo de exercícios como funciona o relacionamento entre duas classes.
 
+============================
 MÉTODOS GETTER E SETTER (raro de encontrar na prática)
+============================
 Caso existam atributos não públicos os quais queira restringir a maneira de alterar seu respectivo valor sem a necessida
 de de usar métodos dentro da classe para tal, deve-se definir os métodos 'getter' e 'setter' para realizar validações durante a
 atribuição. Com isso, ao executar um comando de atribuição:
@@ -204,6 +225,11 @@ def nome_do_atributo(self):
 @nome_do_atributo.setter
 def nome_do_atributo(self):
     # validação
+
+============================
+MÉTODO PARA LISTAR/CONSULTAR INFORMAÇÕES DE UMA CLASSE
+============================
+nome_instancia.__dict__ lista todos os atributos e valores da instância da classe em forma de dicionário
 
 """
 

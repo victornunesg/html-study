@@ -1,10 +1,10 @@
 """
-1. Check if ‘Eric’ and ‘John’ exist in friends
-2. combine or add the two sets
-3. Find names that are in both sets
-4. find names that are only in friends
-5. Show only the names who only appear in one of the lists
-6. Create a new cars-list without duplicates
+1. Verifique se 'Eric’ e ‘John’ existem em friends
+2. Combine ou adicione os dois sets
+3. Encontre nomes que estejam em ambos os sets
+4. Encontre nomes que estejam somente em friends
+5. Mostre apenas os nomes que aparecem somente em uma das listas
+6. Crie uma nova cars-list sem duplicados
 """
 
 # friends = {'John', 'Michael', 'Terry', 'Eric', 'Graham'}

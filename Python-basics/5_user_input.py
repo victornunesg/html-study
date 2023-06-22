@@ -1,28 +1,24 @@
-# --------------------------------
-# USER INPUT
-# --------------------------------
+print('\n===========================================================')
+print('USER INPUT')
+print('===========================================================')
 
-print('--------------------------------')
-print('User input')
-print('--------------------------------')
-
-user_name = input('What is your name? ')
-user_age = input('What is your age? ')
-print('Hello ' + user_name + '!')
-print('You are ' + user_age + ' years old!')
+user_name = input('Nome: ')
+user_age = input('Idade: ')
+print('Olá, ' + user_name + '!')
+print('Você tem ' + user_age + ' anos de idade!')
 print('')
-num1 = input('Enter a number: ')
-num2 = input('Enter a second number:')
+
+num1 = input('Digite um número: ')
+num2 = input('Digite outro número:')
 answer = float(num1) + float(num2)
-# we need to cast the numbers due to the type received when user inputs the digits be a string
-# otherwise the result will be the two numbers concatenated
-print('The addition result is: ' + str(answer))  # other cast to put the number answer as a string
-print('')
+# é necessário realizar um 'cast', alterando o tipo da variável, pois no input automaticamente é setado como string
+# caso contrário o resultado será os dois números concatenados
+print('O resultado da soma é: ' + str(answer))  # novamente usando o 'cast' para transformar o float em string
 
-print('Exercise')
-user_name = input('What is your name? ')
-distance_km = input('What is the distance (in km)? ')
+print('\nExercício - transformando km em milhas')
+user_name = input('Qual é o seu nome? ')
+distance_km = input('Digite a distância em km: ')
+
 distance_miles = float(distance_km) / 1.609
-print('')
-print(f'Hello {user_name.title()}! \nYour distance is {distance_km} km or {round(distance_miles,2)} miles')
-print('')
+
+print(f'\nOlá, {user_name.title()}! \nA distância é de {distance_km} km ou {round(distance_miles,2)} milhas!')

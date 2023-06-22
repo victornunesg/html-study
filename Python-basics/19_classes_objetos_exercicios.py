@@ -3,12 +3,12 @@ from random import randint  # para gerar os numeros dos cartões
 import pytz  # auxilia com o fuso horário (time-zone)
 
 
-"""BLOCO DA DEFINIÇÃO DE CLASSES"""
+# BLOCO DA DEFINIÇÃO DE CLASSES
 
 
 # Definindo uma classe para simular criação de conta corrente com algumas ações
 class ContaCorrente:
-    """  Docstring da classe: (PEP257 - padão de convenções de docstring do Python - global)
+    """  Exemplo de Docstring da classe: (PEP257 - padão de convenções de docstring do Python - global)
 
     O que faz: Cria um objeto conta corrente para gerenciar as contas dos clientes
 
@@ -23,25 +23,26 @@ class ContaCorrente:
     """
 
     # definindo um método estático para fornecer informações de data e hora, não irá utilizar informações da classe
-    # também é auxiliar por não fazer sentido usar fora da classe, também não precisa do self
+    # também é auxiliar por não fazer sentido usar fora da classe, não precisa do self por não usar atributos da Classe
     @staticmethod
     def _data_hora():
         fuso_br = pytz.timezone('Brazil/East')  # fuso horário de BSB
         horario_br = datetime.now(fuso_br)
         return horario_br.strftime('%d/%m/%Y %H:%M:%S')  # método para formatar melhor as datas
 
-    def __init__(self, nome, cpf, agencia, conta):  # quando for criada um objeto, deve-se passar todos os parâmetros
-        self.nome = nome  # atributos não públicos
-        self._cpf = cpf
+    def __init__(self, nome, cpf, agencia, conta):  # quando for instanciada, deve-se passar todos os parâmetros
+        self.nome = nome
+        self._cpf = cpf  # atributos não públicos
         self._saldo = 0
         self._agencia = agencia
         self._conta = conta
         self._limite = None  # None é uma forma alternativa para não se definir um valor no momento
         self._transacoes = []  # para armazenar um histórico de transações financeiras na conta
-        self.cartoes = []  # armazena os cartões de crédito vinculados à conta, como vai ser acessado por outra classe, precisa ser público
+        self.cartoes = []  # cartões de crédito vinculados à conta, público pois é acessado por outra classe
 
     def deposito(self, valor):
         """ exemplo de docstring do método, para ter descrição quando utilizado o comando help(Classe)
+
         Realiza um depósito na conta do cliente, acrescentando seu respectivo saldo
         :param valor: Valor a ser depositado na conta
         :return: None
@@ -77,6 +78,10 @@ class ContaCorrente:
 
     # método que usa como parâmetro um outro objeto/instância da classe
     def transferir(self, valor, conta_destino):
+        """
+        :param valor: valor a ser transferido entre contas
+        :type conta_destino: ContaCorrente
+        """
         self._saldo -= valor
         self._transacoes.append((-valor, self._saldo, ContaCorrente._data_hora(), conta_destino.nome))
         conta_destino._saldo += valor
@@ -93,6 +98,10 @@ class CartaoCredito:
         return horario_br
 
     def __init__(self, titular, conta_corrente):
+        """
+
+        :rtype: CartaoCredito
+        """
         self.numero = randint(1000000000000000, 9999999999999999)
         self.titular = titular
         self.validade = f'{CartaoCredito._data_hora().month}/{CartaoCredito._data_hora().year + 4}'
@@ -118,41 +127,58 @@ class CartaoCredito:
 
 """BLOCO DO PROGRAMA"""
 # criando uma conta corrente
+print('Conta corrente do Victor criada')
 conta_Victor = ContaCorrente('Victor', '04212312312', 3672, '0001')
 conta_Victor.mostrar_saldo()
 
-# # depositando dinheiro na conta
-# conta_Victor.deposito(10000)
-# conta_Victor.mostrar_saldo()
-#
-# # sacando dinheiro na conta
-# conta_Victor.saque(11000)
-#
-# # verificando as transações
-# conta_Victor.consultar_transacoes()
-#
-# # criando uma nova conta
-# conta_Yasmin = ContaCorrente('Yasmin', '05512312312', 3672, '0002')
-# conta_Yasmin.mostrar_saldo()
-#
-# conta_Victor.transferir(500, conta_Yasmin)
-# conta_Victor.consultar_transacoes()
-# conta_Yasmin.consultar_transacoes()
-#
-# # verificando o docstring da classe
-# help(ContaCorrente)
+
+# depositando dinheiro na conta
+print('\nDepósito feito na conta corrente do Victor')
+conta_Victor.deposito(10000)
+conta_Victor.mostrar_saldo()
+
+
+# sacando dinheiro na conta
+print('\nSaque realizado na conta corrente do Victor')
+conta_Victor.saque(11000)
+
+
+# verificando as transações
+conta_Victor.consultar_transacoes()
+
+# criando uma nova conta
+print('\nConta corrente da Yasmin criada')
+conta_Yasmin = ContaCorrente('Yasmin', '05512312312', 3672, '0002')
+conta_Yasmin.mostrar_saldo()
+
+
+# realizando transferência
+print('\nTransferência entre contas de Victor e Yasmin')
+conta_Victor.transferir(500, conta_Yasmin)
+conta_Victor.consultar_transacoes()
+conta_Yasmin.consultar_transacoes()
+
+# verificando o docstring da classe
+print('\nDocstring da classe ContaCorrente')
+print('=====================================')
+help(ContaCorrente)
+print('=====================================')
 
 # criando um cartão de crédito, passando a instância da conta corrente como parâmetro
+print('\nCartão de crédito do Victor criado')
 cartao_Victor = CartaoCredito('Victor', conta_Victor)
-print(cartao_Victor.conta_corrente._conta)  # acessando o numero da conta através do objeto recebido da conta corrente
+print(f'Conta nº: {cartao_Victor.conta_corrente._conta}')  # acessando o nº da conta através do objeto recebido da conta
+print(f'Cartão nº: {cartao_Victor.numero}')
 
 # imprimindo dados do cartão de crédito, que foi passado como objeto para a lista de cartões na Conta Corrente
-print(conta_Victor.cartoes)  # temos uma lista contendo 1 objeto
-print(conta_Victor.cartoes[0])  # acessando o objeto / primeiro elemento da lista
-print(conta_Victor.cartoes[0].numero)  # acessando um atributo do objeto cartao
-print(cartao_Victor.validade)
-print(cartao_Victor.cod_seguranca)
+print('\nImprimindo dados gerais')
+print(f'conta_Victor.cartoes: {conta_Victor.cartoes}')  # temos uma lista contendo 1 objeto
+print(f'conta_Victor.cartoes[0]: {conta_Victor.cartoes[0]}')  # acessando o objeto / primeiro elemento da lista
+print(f'conta_Victor.cartoes[0].numero: {conta_Victor.cartoes[0].numero}')  # acessando um atributo do objeto cartao
+print(f'cartao_Victor.validade: {cartao_Victor.validade}')
+print(f'cartao_Victor.cod_seguranca: {cartao_Victor.cod_seguranca}')
 
-
+# tentando alterar a senha por simples atribuição
+print('\nAlterando a senha do cartão para 123')
 cartao_Victor.senha = '123'
-print(cartao_Victor.senha)
+print(f'Senha atual do cartão: {cartao_Victor.senha}')
