@@ -2,8 +2,7 @@ from datetime import datetime
 from random import randint  # para gerar os numeros dos cartões
 import pytz  # auxilia com o fuso horário (time-zone)
 
-
-# BLOCO DA DEFINIÇÃO DE CLASSES
+# ARQUIVO USADO PARA DEFINIR AS CLASSES
 
 
 # Definindo uma classe para simular criação de conta corrente com algumas ações
@@ -125,7 +124,66 @@ class CartaoCredito:
             print('Senha inválida')
 
 
-"""BLOCO DO PROGRAMA"""
+class Agencia:
+
+    def __init__(self, telefone, cnpj, numero):
+        self.telefone = telefone
+        self.cnpj = cnpj
+        self.numero = numero
+        self.clientes = []
+        self.caixa = 0
+        self.emprestimos = []
+
+    def verificar_caixa(self):
+        if self.caixa < 1000000:
+            print(f'Caixa abaixo do nivel recomendado. Caixa atual R$ {self.caixa}')
+        else:
+            print(f'O valor de caixa esta OK. Caixa atual: R$ {self.caixa}')
+
+    def emprestar_dinheiro(self, valor, cpf, juros):
+        if self.caixa > valor:
+            self.emprestimos.append((valor, cpf, juros))
+        else:
+            print('Empréstimo não é possível. Dinheiro não disponível em caixa.')
+
+    def adicionar_cliente(self, nome, cpf, patrimonio):
+        self.clientes.append((nome, cpf, patrimonio))
+
+
+# CRIANDO SUBCLASSES DA AGENCIA
+class AgenciaHeranca(Agencia):
+
+    pass
+
+class AgenciaVirtual(Agencia):  # recebe a classe Agencia como parâmetro
+
+    # chama o init da subclasse, passando os parametros da superclasse e os novos da subclasse
+    def __init__(self, site, telefone, cnpj):
+
+        # inicializando o init da superclasse também, caso contrário não teremos os atributos da superclasse do init
+        super().__init__(telefone, cnpj, numero=1000)  # por padrão definimos o numero 1000 para agencias virtuais
+
+        self.site = site  # personalizando a agencia virtual com website
+        self.caixa = 1000000  # personalizando a agencia virtual com um caixa diferenciado
+
+
+class AgenciaComum(Agencia):
+
+    def __init__(self, telefone, cnpj):
+        super().__init__(telefone, cnpj, numero=randint(1001, 9999))
+        self.caixa = 1000000  # agencias comuns também iniciam com 1M de caixa
+
+
+class AgenciaPremium(Agencia):
+
+    def __init__(self, telefone, cnpj):
+        super().__init__(telefone, cnpj, numero=randint(1001, 9999))
+        self.caixa = 10000000  # agencias comuns também iniciam com 10M de caixa
+
+
+# O CÓDIGO ABAIXO DEVE SER USADO EM UM ARQUIVO SEPARADO, 'MAIN', PARA CHAMAR AS CLASSES CRIADAS
+
+# BLOCO DO PROGRAMA
 # criando uma conta corrente
 print('Conta corrente do Victor criada')
 conta_Victor = ContaCorrente('Victor', '04212312312', 3672, '0001')
@@ -182,3 +240,40 @@ print(f'cartao_Victor.cod_seguranca: {cartao_Victor.cod_seguranca}')
 print('\nAlterando a senha do cartão para 123')
 cartao_Victor.senha = '123'
 print(f'Senha atual do cartão: {cartao_Victor.senha}')
+
+# criando uma nova agencia
+print('')
+agencia1 = Agencia(6133516464, 999111222333, 4568)
+agencia1.caixa = 2000000
+agencia1.verificar_caixa()
+
+# agencia realizando empréstimo
+print('')
+agencia1.emprestar_dinheiro(1500, 342042042042, 0.02)
+print(agencia1.emprestimos)
+
+# adicionando cliente em uma agencia
+print('')
+agencia1.adicionar_cliente('Victor', 342042042042, 300000)
+print(agencia1.clientes)
+
+# exemplificando a herança da subclasse AgenciaHeranca (herdando atributos e métodos da classe Agencia por padrão)
+print('')
+agencia_heranca = AgenciaHeranca(6134556699, 444555666777, 1230)
+agencia_heranca.caixa = 10000000
+agencia_heranca.verificar_caixa()
+
+# criando uma agência virtual, exibindo seu website
+print('')
+agencia_virtual = AgenciaVirtual('www.agenciavirtual.com.br', 6135448899, 123456789000)
+print(agencia_virtual.site)
+
+# criando uma agência comum
+print('')
+agencia_comum = AgenciaComum(6154460000, 789456123000)
+print(agencia_comum.caixa)
+
+# criando uma agência premium
+print('')
+agencia_premium = AgenciaPremium(6132145578, 789000888000)
+print(agencia_premium.caixa)

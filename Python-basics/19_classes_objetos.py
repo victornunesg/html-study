@@ -231,6 +231,18 @@ MÉTODO PARA LISTAR/CONSULTAR INFORMAÇÕES DE UMA CLASSE
 ============================
 nome_instancia.__dict__ lista todos os atributos e valores da instância da classe em forma de dicionário
 
+============================
+SUBCLASSES
+============================
+Para criar subclasses, basta definir uma nova classe passando como parâmetro a 'classe pai', desta forma, todos os
+atributos e métodos da classe pai são herdados automaticamente.
+
+Se definir uma subclasse sem o método __init__, automaticamente é importado esse método da classe principal. Caso seja
+definido, ele substitui o método da classe principal. É necessário tomar cuidado e verificar se ao definir o init da sub
+classe está 'conversando' com o da superclasse.
+
+Para isso, na definição do init da subclasse, usamos 'super().init' dentro do método init da subclasse, para que além do
+init da superclasse, possamos definir mais atributos específicos da subclasse.
 """
 
 
