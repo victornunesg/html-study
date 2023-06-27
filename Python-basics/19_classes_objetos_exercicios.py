@@ -151,9 +151,10 @@ class Agencia:
 
 
 # CRIANDO SUBCLASSES DA AGENCIA
-class AgenciaHeranca(Agencia):
+class AgenciaHeranca(Agencia):  # somente para verificar conceitos simples de herança
 
     pass
+
 
 class AgenciaVirtual(Agencia):  # recebe a classe Agencia como parâmetro
 
@@ -165,6 +166,16 @@ class AgenciaVirtual(Agencia):  # recebe a classe Agencia como parâmetro
 
         self.site = site  # personalizando a agencia virtual com website
         self.caixa = 1000000  # personalizando a agencia virtual com um caixa diferenciado
+        self.caixa_paypal = 0
+
+    # criando métodos de subclasse, acessíveis apenas para instâncias da AgenciaVirtual
+    def depositar_paypal(self, valor):
+        self.caixa -= valor
+        self.caixa_paypal += valor
+
+    def sacar_paypal(self, valor):
+        self.caixa += valor
+        self.caixa_paypal -= valor
 
 
 class AgenciaComum(Agencia):
@@ -180,100 +191,121 @@ class AgenciaPremium(Agencia):
         super().__init__(telefone, cnpj, numero=randint(1001, 9999))
         self.caixa = 10000000  # agencias comuns também iniciam com 10M de caixa
 
+    # praticando o polimorfismo, modificando o método AdicionarCliente() herdado da superclasse
+    def adicionar_cliente(self, nome, cpf, patrimonio):
+        if patrimonio > 1000000:
+            # adiciona o cliente chamando o método conforme definido na superclasse (em caso de alteração, evita quebra)
+            super().adicionar_cliente(nome, cpf, patrimonio)
+        else:
+            print('O cliente não possui o patrimônio mínimo para entrar na Agência Premium')
+
 
 # O CÓDIGO ABAIXO DEVE SER USADO EM UM ARQUIVO SEPARADO, 'MAIN', PARA CHAMAR AS CLASSES CRIADAS
 
 # BLOCO DO PROGRAMA
-# criando uma conta corrente
-print('Conta corrente do Victor criada')
-conta_Victor = ContaCorrente('Victor', '04212312312', 3672, '0001')
-conta_Victor.mostrar_saldo()
+if __name__ == '__main__':  # executa a parte abaixo caso estejamos rodando esse arquivo, caso contrário será ignorado
+
+    # criando uma conta corrente
+    print('Conta corrente do Victor criada')
+    conta_Victor = ContaCorrente('Victor', '04212312312', 3672, '0001')
+    conta_Victor.mostrar_saldo()
 
 
-# depositando dinheiro na conta
-print('\nDepósito feito na conta corrente do Victor')
-conta_Victor.deposito(10000)
-conta_Victor.mostrar_saldo()
+    # depositando dinheiro na conta
+    print('\nDepósito feito na conta corrente do Victor')
+    conta_Victor.deposito(10000)
+    conta_Victor.mostrar_saldo()
 
+    # sacando dinheiro na conta
+    print('\nSaque realizado na conta corrente do Victor')
+    conta_Victor.saque(11000)
 
-# sacando dinheiro na conta
-print('\nSaque realizado na conta corrente do Victor')
-conta_Victor.saque(11000)
+    # verificando as transações
+    conta_Victor.consultar_transacoes()
 
+    # criando uma nova conta
+    print('\nConta corrente da Yasmin criada')
+    conta_Yasmin = ContaCorrente('Yasmin', '05512312312', 3672, '0002')
+    conta_Yasmin.mostrar_saldo()
 
-# verificando as transações
-conta_Victor.consultar_transacoes()
+    # realizando transferência
+    print('\nTransferência entre contas de Victor e Yasmin')
+    conta_Victor.transferir(500, conta_Yasmin)
+    conta_Victor.consultar_transacoes()
+    conta_Yasmin.consultar_transacoes()
 
-# criando uma nova conta
-print('\nConta corrente da Yasmin criada')
-conta_Yasmin = ContaCorrente('Yasmin', '05512312312', 3672, '0002')
-conta_Yasmin.mostrar_saldo()
+    # verificando o docstring da classe
+    print('\nDocstring da classe ContaCorrente')
+    print('=====================================')
+    help(ContaCorrente)
+    print('=====================================')
 
+    # criando um cartão de crédito, passando a instância da conta corrente como parâmetro
+    print('\nCartão de crédito do Victor criado')
+    cartao_Victor = CartaoCredito('Victor', conta_Victor)
+    print(f'Conta nº: {cartao_Victor.conta_corrente._conta}')  # acessando o nº da conta através do objeto recebido da conta
+    print(f'Cartão nº: {cartao_Victor.numero}')
 
-# realizando transferência
-print('\nTransferência entre contas de Victor e Yasmin')
-conta_Victor.transferir(500, conta_Yasmin)
-conta_Victor.consultar_transacoes()
-conta_Yasmin.consultar_transacoes()
+    # imprimindo dados do cartão de crédito, que foi passado como objeto para a lista de cartões na Conta Corrente
+    print('\nImprimindo dados gerais')
+    print(f'conta_Victor.cartoes: {conta_Victor.cartoes}')  # temos uma lista contendo 1 objeto
+    print(f'conta_Victor.cartoes[0]: {conta_Victor.cartoes[0]}')  # acessando o objeto / primeiro elemento da lista
+    print(f'conta_Victor.cartoes[0].numero: {conta_Victor.cartoes[0].numero}')  # acessando um atributo do objeto cartao
+    print(f'cartao_Victor.validade: {cartao_Victor.validade}')
+    print(f'cartao_Victor.cod_seguranca: {cartao_Victor.cod_seguranca}')
 
-# verificando o docstring da classe
-print('\nDocstring da classe ContaCorrente')
-print('=====================================')
-help(ContaCorrente)
-print('=====================================')
+    # tentando alterar a senha por simples atribuição
+    print('\nAlterando a senha do cartão para 123')
+    cartao_Victor.senha = '123'
+    print(f'Senha atual do cartão: {cartao_Victor.senha}')
 
-# criando um cartão de crédito, passando a instância da conta corrente como parâmetro
-print('\nCartão de crédito do Victor criado')
-cartao_Victor = CartaoCredito('Victor', conta_Victor)
-print(f'Conta nº: {cartao_Victor.conta_corrente._conta}')  # acessando o nº da conta através do objeto recebido da conta
-print(f'Cartão nº: {cartao_Victor.numero}')
+    # criando uma nova agencia
+    print('')
+    agencia1 = Agencia(6133516464, 999111222333, 4568)
+    agencia1.caixa = 2000000
+    agencia1.verificar_caixa()
 
-# imprimindo dados do cartão de crédito, que foi passado como objeto para a lista de cartões na Conta Corrente
-print('\nImprimindo dados gerais')
-print(f'conta_Victor.cartoes: {conta_Victor.cartoes}')  # temos uma lista contendo 1 objeto
-print(f'conta_Victor.cartoes[0]: {conta_Victor.cartoes[0]}')  # acessando o objeto / primeiro elemento da lista
-print(f'conta_Victor.cartoes[0].numero: {conta_Victor.cartoes[0].numero}')  # acessando um atributo do objeto cartao
-print(f'cartao_Victor.validade: {cartao_Victor.validade}')
-print(f'cartao_Victor.cod_seguranca: {cartao_Victor.cod_seguranca}')
+    # agencia realizando empréstimo
+    print('')
+    agencia1.emprestar_dinheiro(1500, 342042042042, 0.02)
+    print(agencia1.emprestimos)
 
-# tentando alterar a senha por simples atribuição
-print('\nAlterando a senha do cartão para 123')
-cartao_Victor.senha = '123'
-print(f'Senha atual do cartão: {cartao_Victor.senha}')
+    # adicionando cliente em uma agencia
+    print('')
+    agencia1.adicionar_cliente('Victor', 342042042042, 300000)
+    print(agencia1.clientes)
 
-# criando uma nova agencia
-print('')
-agencia1 = Agencia(6133516464, 999111222333, 4568)
-agencia1.caixa = 2000000
-agencia1.verificar_caixa()
+    # exemplificando a herança da subclasse AgenciaHeranca (herdando atributos e métodos da classe Agencia por padrão)
+    print('')
+    agencia_heranca = AgenciaHeranca(6134556699, 444555666777, 1230)
+    agencia_heranca.caixa = 10000000
+    agencia_heranca.verificar_caixa()
 
-# agencia realizando empréstimo
-print('')
-agencia1.emprestar_dinheiro(1500, 342042042042, 0.02)
-print(agencia1.emprestimos)
+    # criando uma agência virtual, exibindo seu website
+    print('')
+    agencia_virtual = AgenciaVirtual('www.agenciavirtual.com.br', 6135448899, 123456789000)
+    print(agencia_virtual.site)
 
-# adicionando cliente em uma agencia
-print('')
-agencia1.adicionar_cliente('Victor', 342042042042, 300000)
-print(agencia1.clientes)
+    # criando uma agência comum
+    print('')
+    agencia_comum = AgenciaComum(6154460000, 789456123000)
+    print(agencia_comum.caixa)
 
-# exemplificando a herança da subclasse AgenciaHeranca (herdando atributos e métodos da classe Agencia por padrão)
-print('')
-agencia_heranca = AgenciaHeranca(6134556699, 444555666777, 1230)
-agencia_heranca.caixa = 10000000
-agencia_heranca.verificar_caixa()
+    # criando uma agência premium
+    print('')
+    agencia_premium = AgenciaPremium(6132145578, 789000888000)
+    print(agencia_premium.caixa)
 
-# criando uma agência virtual, exibindo seu website
-print('')
-agencia_virtual = AgenciaVirtual('www.agenciavirtual.com.br', 6135448899, 123456789000)
-print(agencia_virtual.site)
+    # testando métodos da subclasse AgenciaVirtual
+    print('')
+    agencia_virtual.depositar_paypal(20000)
+    print(agencia_virtual.caixa)
+    print(agencia_virtual.caixa_paypal)
 
-# criando uma agência comum
-print('')
-agencia_comum = AgenciaComum(6154460000, 789456123000)
-print(agencia_comum.caixa)
-
-# criando uma agência premium
-print('')
-agencia_premium = AgenciaPremium(6132145578, 789000888000)
-print(agencia_premium.caixa)
+    # testando exemplo de polimorfismo
+    print('')
+    agencia_premium.adicionar_cliente('Teste', 55544477766, 50000)
+    agencia_premium.adicionar_cliente('Teste2', 55544477766, 50000000)
+    print(agencia_premium.clientes)
+    agencia_comum.adicionar_cliente('Teste3', 55544477766, 5000)
+    print(agencia_comum.clientes)

@@ -243,6 +243,19 @@ classe está 'conversando' com o da superclasse.
 
 Para isso, na definição do init da subclasse, usamos 'super().init' dentro do método init da subclasse, para que além do
 init da superclasse, possamos definir mais atributos específicos da subclasse.
+
+============================
+MÉTODOS DE SUBCLASSES
+============================
+São métodos definidos dentro das subclasses e que só podem ser acessados objetos/instâncias daquela subclasse.
+
+============================
+POLIMORFISMO - PERSONALIZANDO MÉTODOS EM UMA SUBCLASSE
+============================
+É possível modificar métodos herdados de uma superclasse em uma subclasse caso seja necessário. Basta redefini-lo dentro
+da subclasse, mantendo o nome e no corpo realizando as alterações necessárias. Ou seja, um mesmo método pode atuar de
+modo distinto para cada instância de subclasses diferentes.
+
 """
 
 
