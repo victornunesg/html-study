@@ -1,0 +1,17 @@
+============================
+Padrão Model-View-Controller
+============================
+
+Os três componentes do padrão MVC são desacoplados e são responsáveis por coisas diferentes:
+
+- Modelo gerencia os dados e define regras e comportamentos. Ele representa a lógica de negócios do aplicativo. Os dados
+podem ser armazenados no próprio Model ou em um banco de dados (somente o Model tem acesso ao banco de dados).
+
+- View apresenta os dados para o usuário. Uma View pode ser qualquer tipo de representação de saída: uma página HTML, um
+gráfico, uma tabela ou até mesmo uma simples saída de texto. Uma View nunca deve chamar seus próprios métodos; apenas um
+Controlador deve fazê-lo.
+
+- Controlador aceita as entradas do usuário e delega a representação de dados a uma Visualização e a manipulação de dados a um Modelo.
+
+Como Model, View e Controller são desacoplados , cada um dos três pode ser estendido, modificado e substituído sem a necessidade
+de reescrever os outros dois.
