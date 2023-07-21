@@ -1,0 +1,29 @@
+:root {
+    /*we define variables in root because it refers to the document root*/
+    /*this is to give the possibility to the variables defined here be available to be used by all elements described in the page*/
+    --textColor: blue;
+    --titleFont: 5em;
+    --divColor: gray;
+    --padding10: 10px;
+    --margin10: 10px;
+}
+
+div {
+    width: 250px;
+    height: 250px;
+    background: var(--divColor);
+    margin-top: var(--margin10);
+}
+
+p {
+    color: var(--textColor)
+}
+
+h1 {
+    color: red;
+    font-size: var(--titleFont);
+}
+
+div.box-01 {
+    padding: var(--padding10);
+}

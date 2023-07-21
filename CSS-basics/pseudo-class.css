@@ -1,0 +1,105 @@
+/*================================================================*/
+/*================================================================*/
+
+/*EXAMPLE 1 SETTINGS*/
+
+form.example1 {
+    background: lightgray;
+    width: 500px;
+    height: 150px;
+    padding: 2em;
+}
+
+input.example1 {
+    outline: 0;
+    padding: 6px;
+}
+
+input.example1:focus {
+    /*pseudo class focus*/
+    /*setting configuration when clicking on the element*/
+    border: 2px solid green;
+    border-radius: 15px;
+}
+
+a {
+    transition: 0.2s;
+}
+
+a:hover {
+    /*setting configuration when passing the mouse over an element*/
+    color: red;
+    cursor: pointer;
+}
+
+a:visited {
+    /*setting configuration when clicking on the link and going back to the same page*/
+    color: green;
+}
+
+a:active {
+    /*setting configuration when the link is being clicked and held with the mouse*/
+    color: aqua;
+}
+
+button {
+    background: gray;
+    color: white;
+    transition: 0.2s;
+    padding: 12px;
+    border: 0;
+    cursor: pointer;
+}
+
+button:hover {
+    /*setting to invert colors when mouse is passing on*/
+    background: white;
+    color: gray;
+    border-radius: 12px;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
+}
+
+/*================================================================*/
+/*================================================================*/
+
+/*EXAMPLE 2 SETTINGS*/
+
+form.example2 {
+    width: 500px;
+    height: 150px;
+    padding: 2em;
+    background: lightcyan;
+    margin-top: 20px;
+}
+
+input.example2 {
+    outline: 0;
+    padding: 6px;
+}
+
+input:not([type="email"]) {
+    /*pseudo class not: in this case, for all inputs in which the type be different from e-mail
+    the following settings will be applied*/
+    border: 2px solid red;
+}
+
+input[type="email"] {
+    /*now we are appliyng settings only for e-mail type of the inputs*/
+    border: 2px solid blue;
+    border-radius: 20px;
+}
+
+ul li:first-child {
+    /*appliyng settings for the first item related to the unordered list*/
+    color: green;
+}
+
+ul li:last-child {
+    /*appliyng settings for the last item related to the unordered list*/
+    color: blue;
+}
+
+ul li:nth-child(3) {
+    /*appliyng settings for the third item related to the unordered list*/
+    color: orange;
+}

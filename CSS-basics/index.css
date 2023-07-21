@@ -1,0 +1,277 @@
+/*
+In CSS, everything, every element is like a box
+Margin - External area of the element
+Border - Around the element
+Padding - In the center, between the 'content' and the border
+
+span is one element that, by standard, does not have any margin, border and padding
+
+specificity
+
+element > class > id > style in line (not use, never) */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} /*removing the standard margins from web browser*/
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*SPECIFICITY EXAMPLES*/
+
+div { /*Element*/
+    background-color: lightcyan;
+}
+
+.green { /*Class*/
+    background-color: green;
+}
+
+#blue { /*id (starts with a # instead of .)*/
+    background-color: blue !important; /*In this case, if some style in line be used, the important element overwrite the style*/
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*FONTS EXAMPLES*/
+
+p {
+    font-size: 30px;
+    color: red;
+    font-family: sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    font-variant: small-caps;
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*BACKGROUND SETTINGS EXAMPLES*/
+
+.div-background {
+    width: 100%;
+    height: 500px;
+
+    background-color: gray;
+    background-image: url("./css-logo.png");
+    background-repeat: no-repeat; /*to not repeat the image*/
+    background-position: center; /*to position the image at the center of the div*/
+    background-size: contain; /*to adjust the image inside the div, like extend or centralize*/
+
+    /*background: chartreuse; /*overwrite everything*/
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*WIDTH/HEIGHT/BORDER/BORDER-RADIUS SETTINGS EXAMPLES*/
+.yellow {
+    background-color: lightgrey;
+    width: 100px;
+    height: 100px;
+    border: 10px dotted yellow;
+    /*border provides the visual settings between marging and padding*/
+    /*receive 3 values: border thickness, border type and border color*/
+    border-radius: 20px; /*used to round the border*/
+}
+
+.blue {
+    background-color: lightgrey;
+    width: 100%;
+    height: 100px;
+    border: 10px double blue;
+    border-radius: 80px;
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*MARGIN AND PADDING SETTINGS EXAMPLE*/
+.red p {
+    text-align: center;
+}
+.red {
+    background-color: lightgrey;
+    border: 5px solid red;
+    padding: 10px 20px 30px 40px;
+    /*padding provides spacing inside the element, if you put only 1 value, it will include space in all directions*/
+    /*we can put 2 or 4 values. for 2 values, the first one is vertical direction and the second one is horizontal*/
+    /*if we put 4 values, the sequence will be: top > right > bottom > left*/
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+    padding-left: 40px;
+    /*the commands between lines 98 and 101 provides the same result as the one at line 94*/
+
+}
+
+.gray {
+    background-color: lightgray;
+    border: 5px solid blue;
+    margin: 10px 20px 30px 40px;
+    /*margin provides spacing outside of the element */
+    /*the logic is the same as padding's 1, 2 or 4 values and the same sequence*/
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 30px;
+    margin-left: 40px;
+    /*the commands between lines 106 and 109 provides the same result as the one at line 103*/
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*DISPLAY SETTINGS EXAMPLE*/
+
+/*by standard, tag p uses display block, creating a block element using 100% of screen space, breaking line*/
+h2 {
+    margin-top: 25px;
+}
+
+div {
+    margin-bottom: 50px;
+}
+
+.none {
+    display: none;
+    /*the element will not be displayed */
+}
+
+.inline {
+    display: inline;
+    /*the element will be displayed like a span, in the same line, without having a box*/
+}
+
+.block {
+    display: block;
+     /*standard for p tag*/
+}
+
+.inline-block {
+    display: inline-block;
+    /*still a block, but now based on the content of the screen, keeps in the same line*/
+}
+
+span {
+    display: block;
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*POSITION SETTINGS EXAMPLE*/
+
+.position-blue {
+    width: 100%;
+    height: 50px;
+    margin: 20px 0px 20px 0px;
+    left: 0;
+    background: blue;
+}
+
+.position-red {
+    width: 100%;
+    height: 100px;
+    margin: 0px 0px 20px 0px;
+    position: fixed;
+    bottom: 200px;
+    background: red;
+    /*there are values like top, bottom, absolute, relative, fixed*/
+    /*absolute makes the element overlap other elements*/
+    /*right, left, top and bottom are used to set the position on the screen*/
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*FLOAT AND OVERFLOW SETTINGS EXAMPLE*/
+
+.float-overflow {
+    width: 100px;
+    height: 100px;
+    overflow: auto;
+    /*Overflow is used when elements are too big for a div for example, then you can adjust it using overflow*/
+    /*if you select 'auto', it will adjust better for each case*/
+    /*can be defined according to axle using overflow-x or overflow-y*/
+}
+
+p.float {
+    font-size: 15px;
+    float: left;
+    /*float defines in which position the element will be placed*/
+    /*is not too used anymore since flexbox is more popular*/
+}
+
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*BOX-SHADOW AND OPACITY SETTINGS EXAMPLE*/
+ .box-opacity {
+    width: 250px;
+    height: 250px;
+    background: green;
+    box-shadow: 10px 10px 5px 10px rgba(0, 0, 0, 0.8);
+    /*receive 4 values: offset for x and y to determine how many pixels
+    blur radius, spread radius and color*/
+    opacity: 0.5;
+    /*indicates the element transparency, applies to the hole element, including its content
+    initial value is 1, you can adjust it from 0.0 to 1.0*/
+ }
+ 
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*UNITS SETTINGS EXAMPLE*/
+
+.units {
+    width: 100vw;
+    height: 150vh;
+    background: gray;
+
+    /*pixels maybe is not the best option for a responsive page*/
+    /*percentage, vh (viewport height), vw (viewport width) are relative, can adapt to the user screen*/
+}
+
+#father {
+    width: 500px;
+    height: 150px;
+    background-color: pink;
+    font-size: 30px;
+}
+
+#son {
+    width: 500px;
+    height: 150px;
+    background-color: rgb(208, 16, 48);
+    font-size: 0.5rem;
+    /*em uses the reference of father container so in this case the font size will be 15px (30px * 0.5)*/
+    /*it works for other parameters as well, like border-radius for example*/
+    /*on the other hand, rem uses the reference contained in the root element (html document), not on the father container*/
+}
+ 
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*GRADIENT SETTINGS EXAMPLE*/
+
+.gradient {
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(black, blue);
+    /*by standard, the gradient begins on top with the first color than goes to the bottom with the second color*/
+    /*it is possible to use much more than 2 colors*/
+    /*you can use like this to change the order*/
+    background: linear-gradient(to right, orange, red, pink);
+    /*it is also possible to define the gradient direction using degrees*/
+    background: linear-gradient(45deg, orange, red,pink);
+    /*instead of using colors like above, you can also use rgba parameter*/
+}
+ 
+/*===============================================================================*/
+/*===============================================================================*/
+
+/*PSEUDO-CLASS SETTINGS EXAMPLE*/

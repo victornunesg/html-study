@@ -1,0 +1,35 @@
+=========================
+Integração Python <> SQL
+=========================
+
+Objetivo:
+A integração do Python com o SQL permite que execute comandos SQL diretamente pelo Python no seu banco de dados.
+Isso vai permitir a gente pegar consultas e já importar elas para dentro de uma análise no Python automaticamente.
+
+O que vamos precisar:
+- Para aprender, vamos usar o SQLite, o objetivo é simplificar a instalação do SQL para que qualquer um consiga acompanhar.
+- Para isso, vamos precisar apenas de um driver, que vamos instalar aqui: http://www.ch-werner.de/sqliteodbc/
+- Um banco de dados para testar
+
+No Python, o que vamos usar:
+Biblioteca pyodbc (pip install pyodbc) -> pode ser usada (integração) com a mesma estrutura para diversos bancos de dados,
+como SQL Server, MySQL, Oracle, Access, IBM, etc.
+
+Cada tipo de banco de dados irá exigir um driver diferente, na hora de fazer a conexão é necessário criar uma variável
+onde será configurado o local do BD, nome do BD e o driver que está sendo usado (varia de acordo com o tipo do BD)
+
+Driver:
+dados_conexao = ("Driver={Seu_Driver};"
+                "Server=SeuServidor;"
+                Database=NomeBaseDeDados;")
+
+Se estivéssemos usando outro sistema de banco de dados, nosso driver mudaria. Para saber em outros casos, execute:
+pyodbc.drivers() -> caso não encontre seu driver ali, basta buscar no google por "driver MeuBancoDeDados for pyodbc" e baixar
+
+Programa DB Browser (gerenciador de banco de dados) - https://sqlitebrowser.org/dl/
+Permite visualizar de forma mais fácil as alterações sendo feitas na base de dados
+
+AVISO IMPORTANTE: sempre fechar a conexão e o cursor após finalizar as edições realizadas no banco de dados, pois ao repetir
+a execução do código por várias vezes irá surgir erro. Se a conexão não é finalizada ao final de cada alteração, o driver faz
+um 'lock' no BD para evitar que várias frentes façam alterações diferentes no banco de dados, permitindo apenas que aquela
+conexão inicialmente aberta interfira e faça alterações. "cursor.close() // conexão.close()"

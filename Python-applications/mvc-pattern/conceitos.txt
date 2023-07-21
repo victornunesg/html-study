@@ -1,0 +1,55 @@
+============================
+Padrão Model-View-Controller
+============================
+
+Os três componentes do padrão MVC são desacoplados e são responsáveis por coisas diferentes:
+
+- Modelo gerencia os dados e define regras e comportamentos. Ele representa a lógica de negócios do aplicativo. Os dados
+podem ser armazenados no próprio Model ou em um banco de dados (somente o Model tem acesso ao banco de dados).
+
+- View apresenta os dados para o usuário. Uma View pode ser qualquer tipo de representação de saída: uma página HTML, um
+gráfico, uma tabela ou até mesmo uma simples saída de texto. Uma View nunca deve chamar seus próprios métodos; apenas um
+Controlador deve fazê-lo.
+
+- Controlador aceita as entradas do usuário e delega a representação de dados a uma Visualização e a manipulação de dados a um Modelo.
+
+Como Model, View e Controller são desacoplados , cada um dos três pode ser estendido, modificado e substituído sem a necessidade
+de reescrever os outros dois.
+
+
+MVC (Model-View-Controller)
+--------------------------
+Popular no desenvolvimento web
+É um padrão de arquitetura de software, separando sua aplicação em 3 camadas:
+
+1) Camada de manipulação dos dados (model) - invisível ao usuário
+	Acesso e manipulação dos dados da aplicação, funções de consulta ao BD ou acesso à API
+2) Camada de interação do usuário (view)
+	Responsavel pela interface que será apresentada ao usuário, contendo os arquivos HTML/templates
+3) Camada de controle (controller)
+	Responsavel por fazer o meio de campo, recebendo as requisições do usuário, utilizar a camada model para
+	obter os dados e em seguida utilizar a view pra renderizar a saída das informações, retornando aos usuário
+
+VANTAGENS:
+--------
+1) Reutilização de códigos entre projetos diferentes
+2) Facilidade na compreensão e manutenção das aplicações
+3) Facilidade de criação de múltiplas interfaces de usuários sem modificar regras de negócio
+4) Possibilidade de criação de temas/templates e APIs sem modificar o código
+
+DESVANTAGENS:
+--------
+1) Complexidade inicial do entendimento do conceito da divisão de camadas
+2) Tempo para planejar a aplicação
+
+EXEMPLO:
+---------
+Usuário acessando um site no navegador
+É realizada uma requisição HTTP para o serviço
+A requisição chega ao controller e comunica ao model
+O model pode fazer uma comunicação com o banco de dados para retornar ao controller informações pertinentes
+O controller vai renderizar a informação na view
+View retorna evento (get/post) ao controller
+Controller devolve a resposta HTTP ao browser do usuário
+Fim
+
