@@ -1,4 +1,4 @@
-"""" EXERCÍCIO DESAFIO
+"""" EXERCÍCIO DESAFIO - ANÁLISE DE SALÁRIOS
 
 Elaborar um relatório da análise dos salários da unidade de San Francisco da empresa.
 O objetivo é entender:
