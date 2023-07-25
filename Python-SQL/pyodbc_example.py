@@ -9,7 +9,7 @@ O objetivo é entender:
 
 Base de dados a ser usada: salarios.sqlite """
 
-import pyodbc
+# import pyodbc
 import pandas as pd
 import sqlite3
 
