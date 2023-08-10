@@ -16,7 +16,10 @@ https://www.twilio.com/docs/libraries/python
 
 3. Agora vamos validar um número porque no Twilio, enviar SMS para um número válido é de graça
 
-4. Agora podemos fazer o nosso código de acordo com as orientações do Twilio"""
+4. Agora podemos fazer o nosso código de acordo com as orientações do Twilio
+
+
+RECOVERY CODE: heJ3hCd7Kh9R4nj5brcQUZpYf9KS57lNH-7lxrEz"""
 
 # Download the helper library from https://www.twilio.com/docs/python/install
 import os
