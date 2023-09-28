@@ -79,17 +79,72 @@
 
 """ RELATÓRIO DE VENDAS """
 
-relatorio_vendas = {}
-qtde_vendas = {}
+# relatorio_vendas = {}
+#
+#
+# def solicitar_nome_vendedor():
+#     nome = input("\nDigite o nome do vendedor (ou 'sair') para finalizar: ")
+#     return nome
+#
+#
+# def solicitar_vendas():
+#     try:
+#         total_vendas = float(input("Valor da venda (R$): "))
+#     except:
+#         print('Entrada inválida, por favor tente novamente!')
+#     return total_vendas
+#
+#
+# def atualizar_dados(vendedor, vendas):
+#     if relatorio_vendas.get(vendedor) is None:
+#         relatorio_vendas[vendedor] = {'total_vendas': vendas, 'qtde_vendas': 1}
+#     else:
+#         relatorio_vendas[vendedor]['total_vendas'] += vendas
+#         relatorio_vendas[vendedor]['qtde_vendas'] += 1
+#
+#
+# def print_dados():
+#     for vendedor in relatorio_vendas:
+#         print(f'Vendedor: {vendedor}; Total de vendas: R$ {relatorio_vendas[vendedor]["total_vendas"]:.2f};'
+#               f' Média de vendas: R$ {relatorio_vendas[vendedor]["total_vendas"] / relatorio_vendas[vendedor]["qtde_vendas"]:.2f}')
+#
+#
+# while True:
+#     nome_vendedor = solicitar_nome_vendedor()
+#     if nome_vendedor == 'sair':
+#         break
+#     total_vendas = solicitar_vendas()
+#     atualizar_dados(nome_vendedor, total_vendas)
+#
+# print_dados()
+
+""" SEGMENTAÇÃO DE CLIENTES """
+
+clientes = {}
+categorias = [(1000, 'Bronze'), (5000, 'Prata'), (float('inf'), 'Ouro')]
 
 while True:
-    vendedor = input("\nDigite o nome do vendedor (ou 'sair') para finalizar: ")
-    if vendedor == 'sair':
+    novo_cliente = str(input("\nDigite o nome do cliente (ou 'sair' para sair): "))
+    if novo_cliente.lower() == 'sair':
         break
-    vendas = input("Número de vendas: ")
     try:
-        relatorio_vendas[vendedor] = vendas
-    qtde_vendas[vendedor] = qtde_vendas[vendedor] + 1
+        total_compras = float(input("Valor total das compras (R$): "))
+    except ValueError:
+        print("Entrada inválida. Por favor, digite um número para compras.")
+        continue
 
-print(relatorio_vendas)
-print(qtde_vendas)
+    for item in categorias:
+        valor, categoria = item
+        if total_compras <= 1000:
+            segmento = categoria
+        elif 1000 < total_compras <= 5000:
+            categoria = 'Prata'
+        else:
+            categoria = 'Ouro'
+
+    clientes[novo_cliente] = categoria
+
+print(clientes)
+for cliente, categoria in clientes.items():
+    print(f'Cliente: {cliente} / Categoria: {categoria}')
+
