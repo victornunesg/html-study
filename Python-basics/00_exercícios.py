@@ -123,28 +123,38 @@
 clientes = {}
 categorias = [(1000, 'Bronze'), (5000, 'Prata'), (float('inf'), 'Ouro')]
 
-while True:
+
+def solicitar_nome_cliente():
     novo_cliente = str(input("\nDigite o nome do cliente (ou 'sair' para sair): "))
-    if novo_cliente.lower() == 'sair':
-        break
+    return novo_cliente
+
+
+def solicitar_total_compras():
     try:
-        total_compras = float(input("Valor total das compras (R$): "))
+        return float(input("Valor total das compras (R$): "))
     except ValueError:
         print("Entrada inválida. Por favor, digite um número para compras.")
-        continue
+        return None
 
+
+def atribuir_segmento(total_compras, novo_cliente):
     for item in categorias:
         valor, categoria = item
-        if total_compras <= 1000:
+        if total_compras <= valor:
             segmento = categoria
-        elif 1000 < total_compras <= 5000:
-            categoria = 'Prata'
-        else:
-            categoria = 'Ouro'
+        clientes[novo_cliente] = segmento
 
-    clientes[novo_cliente] = categoria
 
-print(clientes)
-for cliente, categoria in clientes.items():
-    print(f'Cliente: {cliente} / Categoria: {categoria}')
+def print_segmento_cliente():
+    for cliente, categoria in clientes.items():
+        print(f'Cliente: {cliente} / Categoria: {categoria}')
 
+
+while True:
+    nome = solicitar_nome_cliente()
+    if nome == 'sair':
+        break
+    compras = solicitar_total_compras()
+    atribuir_segmento(compras, nome)
+
+print_segmento_cliente()
