@@ -29,9 +29,6 @@ dados = {
 }
 
 
-
-
-
 # def adicionar_dados(lista):
 #     lista.append(input("Modelo: "))
 #     lista.append(input("Placa: "))
@@ -43,16 +40,17 @@ dados = {
 #
 def gerar_pdf(dados):
     try:
-        cnv = canvas.Canvas(pastaApp + "\\arquivos\checklist.pdf", pagesize=A4)
+        pdf = canvas.Canvas(pastaApp + "\\arquivos\checklist.pdf", pagesize=A4)
         y = 800
         # for dado in lista_preenchida:
         #     cnv.drawString(100, y, dado)
         #     y -= 20
         for chave in dados['dados_cliente']:
           print(f'{chave}: {dados["dados_cliente"][chave]}')
-          cnv.drawString(100, y, f'{chave}: {dados["dados_cliente"][chave]}')
+          pdf.drawString(100, y, f'{chave}: {dados["dados_cliente"][chave]}')
           y -= 20
-        cnv.save()
+        pdf.setFont('Arial', 12)
+        pdf.save()
     except:
         print("Erro ao gerar PDF!")
         return
