@@ -279,43 +279,107 @@ Resultado:
 # Exercícios
 
 ## 1. Mudança de Carga Tributária
-
 - Reformas e mudanças de cargas tributárias são bem comuns no Brasil.
-
 Digamos que você trabalhe em uma empresa de ecommerce
-
 No Brasil, o imposto sobre livros é zerado. De um ano para o outro, o governo criou um novo imposto que incide em 10% sobre o valor dos livros e agora você precisa alterar o registro dos preços dos livros da empresa para garantir que esse imposto vai ser repassado para o preço final do produto.
-
 Crie um código que recalcule o valor do livro da sua lista de produtos e ajuste na tabela.
-
 Além disso, calcule qual vai ser o impacto financeiro da criação desse imposto para a empresa (ou seja, quanto que o imposto vai aumentar de custo para a empresa)
-
 Obs: para facilitar, colocamos apenas 1 livro na lista, mas em breve vamos aprender um for que vai adaptar esse cenário para qualquer quantidade de livros na sua lista.
-
 Obs2: Seu código deve funcionar mesmo que não haja livros na lista de produtos da empresa
 """
 
-produtos = ['computador', 'livro', 'tablet', 'celular', 'tv', 'ar condicionado', 'alexa', 'máquina de café', 'kindle']
+# produtos = ['computador', 'livro', 'tablet', 'celular', 'tv', 'ar condicionado', 'alexa', 'máquina de café', 'kindle']
+#
+# # cada item da lista dos produtos corresponde a quantidade de vendas no mês e preço, nessa ordem
+# produtos_ecommerce = [
+#     [10000, 2500],
+#     [50000, 40],
+#     [7000, 1200],
+#     [20000, 1500],
+#     [5800, 1300],
+#     [7200, 2500],
+#     [200, 800],
+#     [3300, 700],
+#     [1900, 400]
+# ]
+#
+# if 'livro' in produtos:
+#     i = produtos.index('livro')
+#     antigo_total = produtos_ecommerce[i][0] * produtos_ecommerce[i][1]
+#     produtos_ecommerce[i][1] = int(produtos_ecommerce[i][1] * 1.1)
+#     novo_total = produtos_ecommerce[i][0] * produtos_ecommerce[i][1]
+#     imposto = novo_total - antigo_total
+#     print(f'O valor do livro subiu para R$ {produtos_ecommerce[i][1]} e o imposto é de R$ {imposto}')
+# else:
+#     print('Não há livros nos produtos')
 
-# cada item da lista dos produtos corresponde a quantidade de vendas no mês e preço, nessa ordem
-produtos_ecommerce = [
-    [10000, 2500],
-    [50000, 40],
-    [7000, 1200],
-    [20000, 1500],
-    [5800, 1300],
-    [7200, 2500],
-    [200, 800],
-    [3300, 700],
-    [1900, 400]
+'''Exercício 1
+Crie um sistema de cadastro de produtos em uma lista de produtos
+Seu sistema deve:
+- Pegar o usuário qual produto vai ser cadastrado por meio de um input
+- Garantir que se o usuário escrever com letra maiúscula ou minúscula, o produto continua sendo o mesmo produto
+- Se o usuário inserir um produto que já existe na lista, o programa deve printar a mensagem "Produto já existente, tente novamente"
+- Se o usuário inserir um produto que não existe na lista, o programa deve inserir na lista, printar a mensagem Produto X cadastrado com sucesso e em seguida printar a lista completa'''
+
+# produtos = ["celular", "camera", "fone de ouvido", "monitor"]
+# produto = input("Entre com o nome do produto: ").lower()
+# while produto in produtos:
+#     print("Produto já existente, tente novamente")
+#     print("")
+#     produto = input("Entre com o nome do produto: ").lower()
+# produtos.append(produto)
+# print(f"\nProduto {produto} cadastrado com sucesso:")
+# print(produtos)
+
+'''Exercício 2
+Crie um sistema de consulta de preços
+Seu sistema deve:
+- Pedir para o usuário o nome de um produto
+- Caso o produto exista na lista de produtos, o programa deve retornar o preço do produto como resposta
+       - Ex: O produto celular custa R$1500
+- Caso o produto não exista na lista de produtos, o programa deve printar uma mensagem para o usuário tentar novamente'''
+
+# produtos = ["celular", "camera", "fone de ouvido", "monitor"]
+# precos = [1500, 1000, 800, 2000]
+#
+# produto = input("Entre com o nome do produto: ").lower()
+# if produto in produtos:
+#     print(f'O produto {produto} custa R$ {precos[produtos.index(produto)]}')
+# else:
+#     print(f"O produto {produto} não existe na lista de produtos. Tente novamente!")
+
+'''Exercício 3
+Crie um sistema de consulta de bônus dos funcionários
+Seu sistema deve:
+- Pegar o valor de vendas do funcinoário por meio de um input
+- Calcular o bônus do funcionário de acordo com a seguinte regra:
+      - Se o funcionário vendeu mais de 1000 unidades, ele ganha R$2 de bonus para cada unidade vendida
+      - Se o funcionário vendeu mais de 5000 unidades, ele ganha R$2 de bônus para cada unidade + um valor fixo de R$1000
+      - Se o funcionário vendeu menos de 1000 unidades, ele não ganha bônus
+- Printar no final o valor do bônus do funcionário'''
+
+# vendas = int(input("Valor de vendas do funcionário: "))
+# if vendas <= 1000:
+#     bonus = 0
+# elif 1000 < vendas <= 5000:
+#     bonus = vendas * 2
+# elif vendas > 5000:
+#     bonus = (vendas * 2) + 1000
+#
+# print(f"\nBônus do funcionário: R$ {bonus}")
+
+'''Exercício 4
+Crie um programa que consiga descobrir qual dos vendedores vendeu mais
+As vendas dos vendedores são listas com a quantidade vendida por cada vendedor'''
+
+vendas = [
+    [10, 20, 100, 80, 90, 100, 20, 30, 44, 55, 33, 34, 100, 90, 80, 39, 87, 45, 50, 50, 50, 50, 40, 30, 3, 93, 39, 49, 88],
+    [100, 1, 1, 4, 5, 90, 100, 20, 4, 5, 100, 100, 100, 100, 100, 93, 20, 15, 40, 90, 90, 90, 90, 90, 90, 33, 22, 44, 43, 34],
 ]
 
-if 'livro' in produtos:
-    i = produtos.index('livro')
-    antigo_total = produtos_ecommerce[i][0] * produtos_ecommerce[i][1]
-    produtos_ecommerce[i][1] = int(produtos_ecommerce[i][1] * 1.1)
-    novo_total = produtos_ecommerce[i][0] * produtos_ecommerce[i][1]
-    imposto = novo_total - antigo_total
-    print(f'O valor do livro subiu para R$ {produtos_ecommerce[i][1]} e o imposto é de R$ {imposto}')
-else:
-    print('Não há livros nos produtos')
+# total_vendas = []
+# print(len(vendas))
+# for i in range(len(vendas)):
+#     total_vendas.append(sum(vendas[i]))
+# print(total_vendas)
+# print(f'O vendedor vencedor: #{total_vendas.index(max(total_vendas))+1}')
